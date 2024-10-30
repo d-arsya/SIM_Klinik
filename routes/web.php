@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
- Route::view('/dashboard', 'layout.dashboard')->name('dashboard');
+ Route::view('/dashboard', 'dashboard')->name('dashboard');
  Route::view('/antrian-pasien', 'antrian.antrian_pasien')->name('antrian_pasien');
  Route::view('/daftar-pasien', 'daftar.daftar_pasien')->name('daftar_pasien');
  Route::view('/list-invoice', 'invoice.list_invoice')->name('list_invoice');
