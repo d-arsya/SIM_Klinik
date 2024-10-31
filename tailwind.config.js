@@ -12,6 +12,8 @@ export default {
         klinikBlue: '#036CA1',
         hovWhite: 'rgba(255, 255, 255, 0.3)',
         greenProfile: '#17C653',
+        txtgray: '#78829D',
+        txtblack: '#071437',
       }
     },
   },

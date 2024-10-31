@@ -29,5 +29,7 @@ Route::get('/', function () {
 
  Route::view('/daftar-pasien', 'daftar.daftar_pasien')->name('daftar_pasien');
  Route::view('/list-invoice', 'invoice.list_invoice')->name('list_invoice');
+ Route::view('/list-invoice', 'invoice.list_invoice')->name('list_invoice');
  Route::view('/list-rawat-inap', 'rawatinap.list_rawatinap')->name('list_rawatinap');
+ Route::view('/profile', 'profile.index')->name('profile');
 
