@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AntrianPasienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,14 @@ Route::get('/', function () {
 });
 
  Route::view('/dashboard', 'dashboard')->name('dashboard');
- Route::view('/antrian-pasien', 'antrian.antrian_pasien')->name('antrian_pasien');
+
+
+
+ Route::get('/antrian-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
+ Route::get('/tambah-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
+
+
+
  Route::view('/daftar-pasien', 'daftar.daftar_pasien')->name('daftar_pasien');
  Route::view('/list-invoice', 'invoice.list_invoice')->name('list_invoice');
  Route::view('/list-rawat-inap', 'rawatinap.list_rawatinap')->name('list_rawatinap');
