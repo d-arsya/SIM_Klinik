@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RasController;
 use App\Http\Controllers\HewanController;
-use App\Http\Controllers\ServisController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\AntrianPasienController;
@@ -27,8 +27,8 @@ Route::view('/dashboard', 'dashboard')->name('dashboard');
 
 
 
-Route::get('/antrian-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
-Route::get('/tambah-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
+ Route::get('/antrian-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
+ Route::get('/tambah-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
 
 
 
