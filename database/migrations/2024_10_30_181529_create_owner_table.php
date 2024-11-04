@@ -15,6 +15,7 @@ class CreateOwnerTable extends Migration
         Schema::create('owner', function (Blueprint $table) {
             $table->id('id_owner');
             $table->string('nama_owner');
+            $table->string('gender');
             $table->string('alamat');
             // $table->foreignId('id_provinsi')->constrained('provinsi')->onDelete('cascade');
             // $table->foreignId('id_kabupaten')->constrained('kabupaten')->onDelete('cascade');

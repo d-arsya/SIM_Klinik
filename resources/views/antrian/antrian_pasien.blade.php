@@ -6,8 +6,8 @@
 
     <!-- Tombol Tambah Owner -->
     <div style="text-align: right; margin-bottom: 10px;">
-        <button>Pasien Baru</button>
-        <a href="{{ route('antrian') }}">Pasien Lama</a>
+        <a href="{{ route('owner.create') }}">Tambah Owner & Pasien Baru</a>
+        {{-- <a href="{{ route('antrian') }}">Pasien Lama</a> --}}
     </div>
 
     <!-- Tabel Antrian -->
