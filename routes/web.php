@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::view('/dashboard', 'dashboard')->name('dashboard');
 
-
+Route::resource('owner', OwnerController::class);
 
  Route::get('/antrian-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
  Route::get('/tambah-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
