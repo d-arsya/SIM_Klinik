@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pelayanan extends Model
 {
     use HasFactory;
+    protected $table = 'pelayanan';
 
     protected $fillable = ['jenis_pelayanan', 'harga'];
+    protected $primaryKey = 'id_pelayanan';
 
     public function antrianPelayanan()
     {

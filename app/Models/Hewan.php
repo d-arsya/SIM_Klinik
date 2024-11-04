@@ -9,7 +9,11 @@ class Hewan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['jenis_hewan'];
+    protected $table = 'hewan';
+
+    protected $primaryKey = 'id_jenis_hewan';
+
+    protected $fillable = ['jenis_hewan'.'pulsus','suhu','frekuensi_napas'];
 
     public function ras()
     {

@@ -9,11 +9,15 @@ class Ras extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_jenis_hewan', 'nama_ras'];
+    protected $table = 'ras';
+
+    protected $fillable = ['hewan_id', 'nama_ras'];
+
+    protected $primaryKey = 'id_ras';
 
     public function hewan()
     {
-        return $this->belongsTo(Hewan::class, 'id_jenis_hewan');
+        return $this->belongsTo(Hewan::class, 'hewan_id', 'id_jenis_hewan');
     }
 }
 

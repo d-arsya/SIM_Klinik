@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RasController;
+use App\Http\Controllers\HewanController;
+use App\Http\Controllers\ServisController;
+use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\AntrianPasienController;
 
 /*
@@ -33,3 +38,11 @@ Route::get('/', function () {
  Route::view('/list-rawat-inap', 'rawatinap.list_rawatinap')->name('list_rawatinap');
  Route::view('/profile', 'profile.index')->name('profile');
 
+Route::prefix('masterdata')->as('masterdata.')->group(function () {
+    Route::resource('diagnosa', DiagnosaController::class);
+    Route::resource('ras', RasController::class);
+    // Route::resource('warna', WarnaController::class);
+    Route::resource('pelayanan', PelayananController::class);
+    Route::resource('hewan', HewanController::class);
+    // Route::resource('users', UsersController::class);
+});

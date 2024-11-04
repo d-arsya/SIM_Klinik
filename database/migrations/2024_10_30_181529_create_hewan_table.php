@@ -11,6 +11,9 @@ class CreateHewanTable extends Migration
         Schema::create('hewan', function (Blueprint $table) {
             $table->id('id_jenis_hewan');
             $table->string('jenis_hewan');
+            $table->string('pulsus');
+            $table->string('suhu');
+            $table->string('frekuensi_napas');
             $table->timestamps();
         });
     }
