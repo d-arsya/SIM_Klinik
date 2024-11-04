@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RasController;
 use App\Http\Controllers\HewanController;
-use App\Http\Controllers\ServisController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\AntrianPasienController;
@@ -27,9 +27,14 @@ Route::get('/', function () {
 
 
 
- Route::get('/antrian-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
- Route::get('/tambah-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
+ Route::get('/antrian/pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
 
+//  Route::get('/tambah/pasien/baru', [PasienController::class, 'index'])->name('tambah_pasien_baru');
+//  Route::get('/tambah/owner/baru', [OwnerController::class, 'index'])->name('tambah_owner_baru');
+//  Route::post('/tambah/owner/baru', [OwnerController::class, 'store'])->name('tambah_owner_baru');
+
+
+Route::resource('owner', OwnerController::class);
 
 
  Route::view('/daftar-pasien', 'daftar.daftar_pasien')->name('daftar_pasien');
