@@ -1,11 +1,11 @@
 @extends('layout.app')
 @section('content')
     <div class="flex items-center justify-between px-8">
-        <h1 class="font-bold">Tabel Jenis Hewan</h1>
+        <h1 class="font-bold">Tabel Warna</h1>
         <div class="flex">
-            <a href="{{ route('masterdata.hewan.create') }}"
-                class="w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition-all duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                Tambah Hewan
+            <a href="{{ route('masterdata.warna.create') }}"
+                class="w-46 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition-all duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg">
+                Tambah Warna
             </a>
         </div>
     </div>
@@ -63,58 +63,45 @@
                 <table class="min-w-full text-sm text-left text-gray-500 dark:text-gray-400" id="dataTable">
                     <thead class="text-gray-500 bg-gray-100 border-b border-gray-200">
                         <tr>
-                            <th scope="col" class="px-6 py-3 font-semibold text-gray-600 border-r border-gray-100"
+                            <th scope="col" class="px-4 py-3 font-semibold text-gray-600 border-r border-gray-100"
                                 style="font-size: 0.81rem">No.</th>
+                            <th scope="col" class="px-4 py-4 font-semibold text-gray-600 border-r border-gray-100"
+                                style="font-size: 0.81rem">Kode Warna</th>
                             <th scope="col" class="px-6 py-3 font-semibold text-gray-600 border-r border-gray-100"
-                                style="font-size: 0.81rem">Kode Jenis Hewan</th>
-                            <th scope="col" class="px-6 py-3 font-semibold text-gray-600 border-r border-gray-100"
-                                style="font-size: 0.81rem"> Nama Jenis Hewan</th>
-                            <th scope="col" class="px-6 py-3 font-semibold text-gray-600 border-r border-gray-100"
-                                style="font-size: 0.81rem">Pulsus (bpm)</th>
-                            <th scope="col" class="px-6 py-3 font-semibold text-gray-600 border-r border-gray-100"
-                                style="font-size: 0.81rem">Suhu (derajat Celcius)</th>
-                            <th scope="col" class="px-6 py-3 font-semibold text-gray-600 border-r border-gray-100"
-                                style="font-size: 0.81rem">Frekuensi Napas (kali/mnt)</th>
+                                style="font-size: 0.81rem">Warna</th>
                             <th scope="col" class="px-6 py-3 text-center border-r border-gray-100"
                                 style="font-size: 0.81rem">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($hewan as $index => $item)
+                        @foreach ($warna as $index => $item)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-2 font-semibold border-r border-gray-100">
-                                    {{ ($hewan->currentPage() - 1) * $hewan->perPage() + $index + 1 }}</td>
-                                <td class="px-6 py-2 font-semibold text-center border-r border-gray-100">
-                                    {{ $item->id_jenis_hewan }}</td>
-                                <td class="px-6 py-2 font-semibold border-r border-gray-100 ">{{ $item->jenis_hewan }}</td>
-                                <td class="px-6 py-2 border-r border-gray-100 ">{{ $item->pulsus }}</td>
-                                <td class="px-6 py-2 border-r border-gray-100 ">{{ $item->suhu }}</td>
-                                <td class="px-6 py-2 border-r border-gray-100 ">{{ $item->frekuensi_napas }}</td>
-                                <td class="px-6 py-2 text-center border-r border-gray-100">
-                                    <form action="{{ route('masterdata.hewan.edit', $item->id_jenis_hewan) }}"
-                                        class="inline mr-2">
-                                        @csrf
-                                        <button type="submit"
-                                            class="px-2 py-2 mb-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-yellow-400 rounded-lg shadow-lg focus:outline-none hover:bg-yellow-500 hover:scale-105 hover:shadow-xl me-2 dark:focus:ring-yellow-900">
-                                            <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                fill="currentColor" viewBox="0 0 24 24">
-                                                <path fill-rule="evenodd"
-                                                    d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
-                                                    clip-rule="evenodd" />
-                                                <path fill-rule="evenodd"
-                                                    d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </form>
+                                <td class="px-4 py-4 font-semibold border-r border-gray-100">
+                                    {{ ($warna->currentPage() - 1) * $warna->perPage() + $index + 1 }}</td>
+                                <td class="px-4 py-4 font-semibold text-center border-r border-gray-100">
+                                    {{ $item->id }}</td>
+                                <td class="px-6 py-4 font-semibold border-r border-gray-100 ">{{ $item->warna }}</td>
+                                <td class="flex justify-center px-6 py-4 space-x-2 text-center border-r border-gray-100">
+                                    <a href="{{ route('masterdata.warna.edit', $item->id) }}"
+                                        class="inline-block px-2 py-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-500 hover:scale-105 hover:shadow-xl dark:focus:ring-yellow-900">
+                                        <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd"
+                                                d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
+                                                clip-rule="evenodd" />
+                                            <path fill-rule="evenodd"
+                                                d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
 
-                                    <form action="{{ route('masterdata.hewan.destroy', $item->id_jenis_hewan) }}"
-                                        method="POST" class="inline">
+                                    <form action="{{ route('masterdata.warna.destroy', $item->id) }}" method="POST"
+                                        class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button onclick="return confirm('Yakin mau dihapus?')" type="submit"
-                                            class="px-2 py-2 mb-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-red-700 rounded-lg shadow-lg focus:outline-none hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900 hover:scale-105 hover:shadow-xl me-2 dark:bg-red-600 dark:hover:bg-red-700">
+                                            class="px-2 py-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-red-700 rounded-lg shadow-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900 hover:scale-105 hover:shadow-xl dark:bg-red-600 dark:hover:bg-red-700">
                                             <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 fill="currentColor" viewBox="0 0 24 24">
@@ -123,9 +110,9 @@
                                                     clip-rule="evenodd" />
                                             </svg>
                                         </button>
-
                                     </form>
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>
@@ -147,30 +134,30 @@
                 <div class="flex flex-row">
 
                     <span class="m-2">
-                        {{ ($hewan->currentPage() - 1) * $hewan->perPage() + 1 }} -
-                        {{ min($hewan->currentPage() * $hewan->perPage(), $hewan->total()) }}
-                        dari {{ $hewan->total() }}
+                        {{ ($warna->currentPage() - 1) * $warna->perPage() + 1 }} -
+                        {{ min($warna->currentPage() * $warna->perPage(), $warna->total()) }}
+                        dari {{ $warna->total() }}
                     </span>
 
                     <div class="flex items-center">
                         <!-- Tombol Sebelumnya -->
                         <button
                             class="px-2 py-1 mx-1 text-gray-500 bg-white border border-gray-300 rounded hover:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
-                            @if ($hewan->onFirstPage()) disabled @endif
-                            onclick="window.location='{{ $hewan->previousPageUrl() }}'">
+                            @if ($warna->onFirstPage()) disabled @endif
+                            onclick="window.location='{{ $warna->previousPageUrl() }}'">
                             &lt;
                         </button>
 
                         <!-- Nomor Halaman -->
-                        @foreach (range(1, $hewan->lastPage()) as $page)
-                            @if ($page == $hewan->currentPage())
+                        @foreach (range(1, $warna->lastPage()) as $page)
+                            @if ($page == $warna->currentPage())
                                 <button class="px-3 py-1 mx-1 text-white bg-blue-600 border border-blue-600 rounded">
                                     {{ $page }}
                                 </button>
                             @else
                                 <button
                                     class="px-3 py-1 mx-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100"
-                                    onclick="window.location='{{ $hewan->url($page) }}'">
+                                    onclick="window.location='{{ $warna->url($page) }}'">
                                     {{ $page }}
                                 </button>
                             @endif
@@ -179,8 +166,8 @@
                         <!-- Tombol Berikutnya -->
                         <button
                             class="px-2 py-1 mx-1 text-gray-500 bg-white border border-gray-300 rounded hover:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
-                            @if (!$hewan->hasMorePages()) disabled @endif
-                            onclick="window.location='{{ $hewan->nextPageUrl() }}'">
+                            @if (!$warna->hasMorePages()) disabled @endif
+                            onclick="window.location='{{ $warna->nextPageUrl() }}'">
                             &gt;
                         </button>
                     </div>
