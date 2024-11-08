@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Desa;
 use App\Models\Owner;
+use App\Models\Provinsi;
+use App\Models\Kabupaten;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
 class OwnerController extends Controller
@@ -12,8 +16,14 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        return view('antrian.tambah_owner_baru');
+        $provinsis = Provinsi::all();
+        $kabupatens = Kabupaten::all();
+        $kecamatans = Kecamatan::all();
+        $desas = Desa::all();
+
+        return view('antrian.tambah_owner_baru', compact('provinsis', 'kabupatens', 'kecamatans', 'desas'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -24,39 +34,30 @@ class OwnerController extends Controller
         $validatedData = $request->validate([
             'nama_owner' => 'required|string|max:255',
             'gender' => 'required|string|max:50',
-            'nomor_telepon' => 'required|string|max:15',
             'alamat' => 'required|string',
-            'kota' => 'required|string',
-            'provinsi' => 'required|string',
-            'kode_pos' => 'required|string|max:10',
-            'negara' => 'required|string|max:100',
-            'info_tambahan' => 'nullable|string',
-            'photo' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+            'provinsi_id' => 'required|exists:provinsi,id',
+            'kabupaten_id' => 'required|exists:kabupaten,id',
+            'kecamatan_id' => 'required|exists:kecamatan,id',
+            'desa_id' => 'required|exists:desa,id',
+            'no_hp' => 'required|string|max:15',
         ]);
 
         // Buat instance model Owner dan isi dengan data validasi
         $owner = new Owner();
-        $owner->nama = $validatedData['nama'];
+        $owner->nama_owner = $validatedData['nama_owner'];
         $owner->gender = $validatedData['gender'];
-        $owner->nomor_telepon = $validatedData['nomor_telepon'];
         $owner->alamat = $validatedData['alamat'];
-        $owner->kota = $validatedData['kota'];
-        $owner->provinsi = $validatedData['provinsi'];
-        $owner->kode_pos = $validatedData['kode_pos'];
-        $owner->negara = $validatedData['negara'];
-        $owner->info_tambahan = $validatedData['info_tambahan'];
-
-        // Simpan file foto jika ada
-        if ($request->hasFile('photo')) {
-            $filePath = $request->file('photo')->store('public/photos');
-            $owner->photo = basename($filePath);
-        }
+        $owner->provinsi_id = $validatedData['provinsi_id'];
+        $owner->kabupaten_id = $validatedData['kabupaten_id'];
+        $owner->kecamatan_id = $validatedData['kecamatan_id'];
+        $owner->desa_id = $validatedData['desa_id'];
+        $owner->no_hp = $validatedData['no_hp'];
 
         // Simpan data ke database
         $owner->save();
 
         // Redirect ke halaman yang diinginkan setelah penyimpanan
-        return redirect()->route('owners.index')->with('success', 'Data pemilik hewan berhasil ditambahkan.');
+        return redirect()->route('pasien.index')->with('success', 'Data pemilik hewan berhasil ditambahkan.');
     }
 }
 

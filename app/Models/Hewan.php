@@ -13,7 +13,20 @@ class Hewan extends Model
 
     protected $primaryKey = 'id_jenis_hewan';
 
-    protected $fillable = ['jenis_hewan'.'pulsus','suhu','frekuensi_napas'];
+    protected $fillable = [
+        'nama_hewan',
+        'gender',
+        'umur',
+        'jenis_hewan',
+        'warna',
+        'berat_badan',
+        'pulsus',
+        'suhu',
+        'frekuensi_napas',
+        'service',
+        'jenis_vaksin', // tambahkan ini
+        'sudah_vaksin', // dan ini
+    ];
 
     public function ras()
     {

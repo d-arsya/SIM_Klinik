@@ -10,6 +10,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\AntrianPasienController;
+use App\Http\Controllers\PasienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,10 @@ Route::get('/', function () {
 Route::view('/dashboard', 'dashboard')->name('dashboard');
 
 Route::resource('owner', OwnerController::class);
-
+Route::resource('pasien', PasienController::class);
 Route::get('/antrian-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
 Route::get('/tambah-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
+Route::get('/antrian/pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
 
 
 
