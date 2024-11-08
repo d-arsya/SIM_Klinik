@@ -16,6 +16,7 @@ class Pasien extends Model
         return $this->belongsTo(Owner::class, 'id_owner')->first();
     }
 
+
     public function hewan()
     {
         return $this->belongsTo(Hewan::class, 'id_jenis_hewan')->first();

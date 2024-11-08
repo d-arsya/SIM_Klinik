@@ -10,6 +10,7 @@ class Kabupaten extends Model
     use HasFactory;
 
     protected $fillable = ['nama_kota', 'id_provinsi'];
+    protected $table = 'kabupaten';
 
     public function provinsi()
     {

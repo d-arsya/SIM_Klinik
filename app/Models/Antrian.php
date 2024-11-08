@@ -14,17 +14,17 @@ class Antrian extends Model
 
     public function pasien()
     {
-        return $this->belongsTo(Pasien::class, 'id_pasien');
+        return $this->belongsTo(Pasien::class, 'id_pasien')->first();
     }
 
     public function users()
     {
-        return $this->belongsTo(User::class, 'id_users');
+        return $this->belongsTo(User::class, 'id_users')->first();
     }
 
     public function antrianPelayanan()
     {
-        return $this->hasMany(AntrianPelayanan::class, 'id_antrian');
+        return $this->hasMany(AntrianPelayanan::class, 'id_antrian')->get();
     }
 }
 

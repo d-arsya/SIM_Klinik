@@ -10,6 +10,7 @@ class Desa extends Model
     use HasFactory;
 
     protected $fillable = ['nama_desa', 'id_kecamatan'];
+    protected $table = 'desa';
 
     public function kecamatan()
     {

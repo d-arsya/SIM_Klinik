@@ -10,7 +10,7 @@ class Owner extends Model
     use HasFactory;
 
     protected $fillable = ['nama_owner', 'alamat', 'id_provinsi', 'id_kabupaten', 'id_kecamatan', 'id_desa', 'no_hp'];
-
+    protected $table = "owner";
     public function pasien()
     {
         return $this->hasMany(Pasien::class, 'id_owner')->get();
