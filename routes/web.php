@@ -32,12 +32,12 @@ Route::resource('pasien', PasienController::class);
 Route::get('/antrian/pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
 
 
-
 Route::view('/daftar-pasien', 'daftar.daftar_pasien')->name('daftar_pasien');
 Route::view('/list-invoice', 'invoice.list_invoice')->name('list_invoice');
 Route::view('/list-invoice', 'invoice.list_invoice')->name('list_invoice');
 Route::view('/list-rawat-inap', 'rawatinap.list_rawatinap')->name('list_rawatinap');
 Route::view('/profile', 'profile.index')->name('profile');
+Route::view('/detail-owner', 'antrian.detail_owner')->name('detail_owner');
 
 Route::prefix('masterdata')->as('masterdata.')->group(function () {
     Route::resource('diagnosa', DiagnosaController::class);

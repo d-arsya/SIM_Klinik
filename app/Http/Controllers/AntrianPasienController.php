@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Antrian;
+use App\Models\Provinsi;
+use App\Models\Kabupaten;
+use App\Models\Kecamatan;
+use App\Models\Desa;
 use Illuminate\Http\Request;
 
 class AntrianPasienController extends Controller
@@ -13,7 +17,11 @@ class AntrianPasienController extends Controller
     public function index()
     {
         $antrians = Antrian::all();
-        return view('antrian.antrian_pasien', compact('antrians'));
+        $provinsis = Provinsi::all();
+        $kabupatens = Kabupaten::all();
+        $kecamatans = Kecamatan::all();
+        $desas = Desa::all();
+        return view('antrian.antrian_pasien', compact('antrians', 'provinsis','kabupatens','kecamatans','desas'));
     }
 
     /**

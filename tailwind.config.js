@@ -11,9 +11,15 @@ export default {
       colors: {
         klinikBlue: '#036CA1',
         hovWhite: 'rgba(255, 255, 255, 0.3)',
+        hovBlue: 'rgba(3, 108, 161, 0.9)',
         greenProfile: '#17C653',
-        txtgray: '#78829D',
+        txtgray: '#99A2B7',
         txtblack: '#071437',
+        borderGrey: '#DBDFE9',
+        bgGreenSuccess: 'rgba(23, 198, 83, 0.2)',
+        txtGreenSuccess: '#17C653',
+        alert: '#D81A48',
+        bgAlert: 'rgba(248, 40, 90, 0.2)',
       }
     },
   },

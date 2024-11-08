@@ -8,7 +8,7 @@
             </button>
 
             <!-- Dropdown Logout -->
-            <div id="profile-menu" class="hidden z-10 w-20 bg-white rounded divide-y divide-gray-100">
+            <div id="profile-menu" class="hidden z-10 w-20 border border-1 bg-white rounded divide-y divide-gray-100">
                 <ul class="py-1 text-sm text-gray-700" aria-labelledby="profile-menu-button">
                     <li>
                         <a href="/logout" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
