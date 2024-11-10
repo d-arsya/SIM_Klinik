@@ -14,11 +14,8 @@
                     <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Cari..."
                         class="w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zm-5.9-3.82a6 6 0 1112 0 6 6 0 01-12 0z"
-                                clip-rule="evenodd"></path>
+                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5054 10.203C12.3645 9.16492 12.8809 7.83273 12.8809 6.37994C12.8809 3.06624 10.1946 0.379944 6.88086 0.379944C3.56715 0.379944 0.880859 3.06624 0.880859 6.37994C0.880859 9.69365 3.56715 12.3799 6.88086 12.3799C8.33367 12.3799 9.66587 11.8636 10.704 11.0044L13.1468 13.4473C13.3681 13.6686 13.7269 13.6686 13.9482 13.4473C14.1695 13.226 14.1695 12.8672 13.9482 12.6459L11.5054 10.203ZM6.88086 11.2679C4.1813 11.2679 1.99288 9.0795 1.99288 6.37994C1.99288 3.68039 4.1813 1.49197 6.88086 1.49197C9.58041 1.49197 11.7688 3.68039 11.7688 6.37994C11.7688 9.0795 9.58041 11.2679 6.88086 11.2679Z" fill="#99A1B7"/>
                         </svg>
                     </div>
                 </div>
@@ -96,16 +93,18 @@
                             <td class="px-6 py-4 border-r border-gray-100" style="font-size: 0.8rem">Rp
                                 150.000,00</td>
                             <td class="px-6 py-4 text-center border-r border-gray-100">
-                                <div class="flex items-center py-2 pl-2 space-x-2 border border-pink-200 rounded-full bg-pink-50"
+                                <div class="flex items-center w-[115px] py-2 pl-2 space-x-2 border border-pink-200 rounded-full bg-pink-50"
                                     style="font-size: 0.8rem">
                                     <span class="w-1.5 h-1.5 bg-pink-500 rounded-full"></span>
                                     <span class="font-semibold text-pink-600">Belum Lunas</span>
                                 </div>
-
                             </td>
                             <td class="px-6 py-4 text-center border-r border-gray-100">
-                                <a href="{{ route('invoice.detail', 1) }}"
-                                    class="inline-flex items-center px-2 py-2 mb-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-[#036CA1] rounded-lg shadow-lg focus:outline-none hover:bg-[#036CA1]-700 hover:scale-105 hover:shadow-xl dark:focus:ring-blue-900">
+                                <x-link 
+                                data-modal-target="detail-invoice" 
+                                data-modal-toggle="detail-invoice"
+                                color="blue"
+                                href="#">
                                     <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         fill="currentColor" viewBox="0 0 24 24">
@@ -113,9 +112,9 @@
                                             d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Zm-6 8a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                </a>
 
-
+                                </x-link>
+                                
                             </td>
                         </tr>
                         <tr class="bg-white dark:bg-gray-800 dark:border-gray-700">
@@ -143,7 +142,7 @@
 
                             </td>
                             <td class="px-6 py-4 text-center border-r border-gray-100">
-                                <a href="{{ route('invoice.detail', 2) }}"
+                                <a href="#"
                                     class="inline-flex items-center px-2 py-2 mb-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-[#036CA1] rounded-lg shadow-lg focus:outline-none hover:bg-[#036CA1]-700 hover:scale-105 hover:shadow-xl dark:focus:ring-blue-900">
                                     <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -153,14 +152,15 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </a>
-
-
                             </td>
                         </tr>
 
                     </tbody>
                 </table>
             </div>
+            <x-pop-up id="detail-invoice" header="Detail Invoice" class="hidden">
+                @include('invoice.detail_invoice')
+            </x-pop-up>
 
             <!-- Pagination with Rows Per Page Selector -->
             {{-- <div class="flex items-center justify-between mt-4 text-sm text-gray-700">

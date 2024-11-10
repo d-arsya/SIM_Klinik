@@ -14,7 +14,7 @@ class Button extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($type = 'button',$color,$class = '')
+    public function __construct($type = 'button',$color='',$class = '')
     {
         $this->type = $type;
         $this->color = $color;
@@ -38,7 +38,7 @@ class Button extends Component
         } elseif ($this->color === 'white') {
             return 'text-klinikBlue bg-white border-2 border-klinikBlue hover:bg-hovWhite';
         } elseif ($this->color === 'red') {
-            return 'text-white bg-alert hover:bg-bgAlert';
+            return 'text-white bg-alert hover:bg-hovAlert';
         }
         return ''; // Default case
     }

@@ -19,7 +19,7 @@ class InvoiceController extends Controller
      */
     public function detail(string $id)
     {
-        return view('invoice.detail_invoice',);
+        return view('invoice.cetak_invoice');
     }
 
     /**

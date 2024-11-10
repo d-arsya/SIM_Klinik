@@ -19,6 +19,7 @@ export default {
         bgGreenSuccess: 'rgba(23, 198, 83, 0.2)',
         txtGreenSuccess: '#17C653',
         alert: '#D81A48',
+        hovAlert: '#F01E51',
         bgAlert: 'rgba(248, 40, 90, 0.2)',
       }
     },

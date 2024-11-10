@@ -29,7 +29,7 @@
     
 
         <!-- Province, City, District, Village Dropdowns -->
-        <div class="grid grid-cols-4 gap-[10px] col-span-3 col-start-2">
+        <!-- <div class="grid grid-cols-4 gap-[10px] col-span-3 col-start-2">
             <select name="provinsi_id" id="provinsi_id" class="mt-2 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 <option value="">Pilih Provinsi</option>
                 @foreach ($provinsis as $provinsi)
@@ -54,7 +54,7 @@
                     <option value="{{ $desa->id }}">{{ $desa->nama_desa }}</option>
                 @endforeach
             </select>
-        </div>
+        </div> -->
 
         <div class="col-span-4 place-self-end">
             <x-button type="submit" color="blue" class="w-[137px]">Submit</x-button>
@@ -62,10 +62,10 @@
     </div>
 </form>
 
-<script>
+<!-- <script>
     document.getElementById('submitForm').onsubmit = function() {
         setTimeout(function() {
             window.location.href = 'antrian.tambah_pasien_baru'; // Halaman tujuan setelah submit
         }, 500); // Delay 500ms untuk memastikan data sudah diproses
     };
-</script>
+</script> -->

@@ -40,6 +40,8 @@ Route::view('/daftar-pasien', 'daftar.daftar_pasien')->name('daftar_pasien');
 Route::view('/list-rawat-inap', 'rawatinap.list_rawatinap')->name('list_rawatinap');
 Route::view('/profile', 'profile.index')->name('profile');
 Route::view('/detail-owner', 'antrian.detail_owner')->name('detail_owner');
+Route::view('/detail-hewan', 'antrian.detail_hewan')->name('detail_hewan');
+
 
 Route::prefix('masterdata')->as('masterdata.')->group(function () {
     Route::resource('diagnosa', DiagnosaController::class);
