@@ -206,5 +206,5 @@
      </div>
     </div>
 <div class="place-self-end">
-    <x-button color="blue" class="w-[172px]">Cetak Invoice</x-button>
+    <x-link href="route('cetak_invoice')" color="blue" class="w-[172px]">Cetak Invoice</x-link>
 </div>

@@ -41,6 +41,7 @@ Route::view('/list-rawat-inap', 'rawatinap.list_rawatinap')->name('list_rawatina
 Route::view('/profile', 'profile.index')->name('profile');
 Route::view('/detail-owner', 'antrian.detail_owner')->name('detail_owner');
 Route::view('/detail-hewan', 'antrian.detail_hewan')->name('detail_hewan');
+Route::view('/cetak-invoice', 'invoice.cetak_invoice')->name('cetak_invoice');
 
 
 Route::prefix('masterdata')->as('masterdata.')->group(function () {

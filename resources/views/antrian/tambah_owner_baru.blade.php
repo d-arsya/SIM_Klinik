@@ -57,15 +57,31 @@
         </div> -->
 
         <div class="col-span-4 place-self-end">
-            <x-button type="submit" color="blue" class="w-[137px]">Submit</x-button>
+            <x-button 
+            data-modal-target="tambah-pasien" 
+            data-modal-toggle="tambah-pasien"
+            type="button" 
+            color="blue" 
+            class="w-[137px]"
+            onclick="openModalAndSubmit(event, 'tambah-pasien')">Submit</x-button>
         </div>
     </div>
 </form>
 
-<!-- <script>
-    document.getElementById('submitForm').onsubmit = function() {
+<x-pop-up id="tambah-pasien" header="Hewan Peliharaan Baru" class="hidden">
+    @include('antrian.tambah_pasien_baru')
+</x-pop-up>
+
+<script>
+    function openModalAndSubmit(event, modalId) {
+        event.preventDefault();
+        // Tampilkan pop-up
+        document.getElementById(modalId).classList.remove('hidden');
+        
+        // Submit form setelah pop-up tampil
         setTimeout(function() {
-            window.location.href = 'antrian.tambah_pasien_baru'; // Halaman tujuan setelah submit
-        }, 500); // Delay 500ms untuk memastikan data sudah diproses
-    };
-</script> -->
+            const form = document.getElementById('submitForm');
+            form.submit();
+        }, 1000); // Menambahkan sedikit jeda untuk memastikan pop-up tampil sebelum submit
+    }
+</script>
