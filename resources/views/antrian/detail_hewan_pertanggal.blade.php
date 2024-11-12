@@ -1,6 +1,8 @@
 @extends('layout.app')
 @section('title', 'detail hewan')
 @section('content')
+
+<!-- Profile -->
 <div class="flex justify-between mb-7">
     <div class="flex items-center space-x-5">
         <img class="w-[100px] h-[100px]" src="img/img-detail-hewan.png" alt="detail-hewan">
@@ -16,13 +18,15 @@
         </div>
     </div>
 </div>
+
+<!-- About -->
 <div class="mb-7 border-2 rounded-xl">
     <div class="flex justify-between px-[30px] border-b-2">
         <h2 class="text-lg py-3 font-medium">About</h2>
         <x-button color="blue" class="self-center px-4 h-[30px]">Edit</x-button>
     </div>
     <div class="p-[30px] flex justify-start items-center">
-        <div class="grid grid-cols-2 gap-7 text-sm">
+        <div class="flex gap-7 text-sm">
             <div class="space-y-4 text-txtgray">
                 <div>Nama:</div>
                 <div>Umur:</div>
@@ -46,9 +50,42 @@
         </div>
     </div>
 </div>
+
+<!-- History Pemeriksaan -->
+<div class="border-y py-3 my-3 space-y-5">
+    <div class="font-semibold text-base">History Pemeriksaan</div>
+    <div class="font-medium text-lg">8 Januari 2024</div>
+    <div class="flex text-sm space-x-4 gap-7">
+        <div class="text-txtgray space-y-4">
+            <div>Berat Badan:</div>
+            <div>Pulpus</div>
+            <div>Frekuensi napas:</div>
+            <div>Suhu:</div>
+        </div>
+        <div class="space-y-4">
+            <div>10 kg</div>
+            <div>70 bpm</div>
+            <div>20 kali per menit</div>
+            <div>40 derajat celcius</div>
+        </div>
+    </div>
+    <div class="space-y-4">
+        <div class="font-semibold text-base">Anamnesa</div>
+        <div class="text-base">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+        when an unknown printer took a galley of type and scrambled it to make a 
+        type specimen book. It has survived not only five centuries, but also the 
+        leap into electronic typesetting, remaining essentially unchanged. 
+        </div>
+    </div>
+</div>
+
+
+<!-- Obat -->
 <div>
-    <div class="font-semibold text-base my-3">Histori Pemeriksaan</div>
-    <x-table>
+    <div class="font-semibold text-base my-3">Obat</div>
+    <table class="w-fit text-left rtl:text-right">
         <thead class="text-gray-500 bg-gray-100 border-b border-gray-200">
         <tr>
             <th scope="col" class="px-6 py-3 text-center border-r border-gray-100"
@@ -60,26 +97,28 @@
                     </svg></a>
                 </div>
             </th>
-            <th scope="col" class="flex items-center px-6 py-3 text-center border-r border-gray-100"
+            <th scope="col" class="items-center px-6 py-3 text-center border-r border-gray-100"
                 style="font-size: 0.81rem">
                 <div class="flex items-center">
-                    Tanggal
+                    Jenis Obat
+                    <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
+                    </svg></a>
+                </div>
+            </th>
+            <th scope="col" class="items-center px-6 py-3 text-center border-r border-gray-100"
+                style="font-size: 0.81rem">
+                <div class="flex items-center">
+                    Nama Obat
                     <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
                     </svg></a>
                 </div>
             </th>
             <th scope="col" class="px-6 py-3 border-r border-gray-100"
-                style="font-size: 0.81rem">Anamnesa</th>
+                style="font-size: 0.81rem">Jumlah Obat</th>
             <th scope="col" class="px-6 py-3 border-r border-gray-100"
-                style="font-size: 0.81rem">Obat</th>
-            <th scope="col" class="px-6 py-3 border-r border-gray-100"
-                style="font-size: 0.81rem">Diagnosa</th>
-            <th scope="col" class="px-6 py-3 border-r border-gray-100"
-                style="font-size: 0.81rem">Invoice</th>
-            <th scope="col" class="px-6 py-3 border-r border-gray-100"
-                style="font-size: 0.81rem">Aksi</th>
-        </tr>
+                style="font-size: 0.81rem">Catatan</th>
     </thead>
     <tbody class="bg-white font-semibold text-sm">
         <tr class=" border-b">
@@ -87,38 +126,34 @@
                 1
             </td>
             <td class="px-6 py-4 border-r">
-                09/01/24
-            </td>
-            <td class="px-6 py-4 border-r ">
-                Lorem ipsum dolor sit amet consectetur ...
-            </td>
-            <td class="px-6 py-4 border-r">
                 Paracetamol
             </td>
             <td class="px-6 py-4 border-r">
-                Terkena Virus Rabies
+                Paracetamol A
             </td>
-            <td class="px-6 py-4 border-r">
-                <x-link href="#" color="blue"
-                    class="inline-flex items-center w-[34.78px] h-8 px-2 py-2 mb-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-[#036CA1] rounded-lg shadow-lg focus:outline-none hover:bg-[#036CA1]-700 hover:scale-105 hover:shadow-xl dark:focus:ring-blue-900">
-                    <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.2031 18.5H4.20312C3.27487 18.5 2.38463 18.1313 1.72825 17.4749C1.07187 16.8185 0.703125 15.9283 0.703125 15V1.94304C0.703125 0.876041 1.75913 0.199041 2.68813 0.521041C2.82146 0.567041 2.95046 0.634374 3.07513 0.723041L3.25012 0.848041C3.67578 1.15007 4.185 1.31189 4.70692 1.311C5.22885 1.3101 5.73751 1.14653 6.16213 0.843041C6.75816 0.418855 7.47156 0.190918 8.20312 0.190918C8.93469 0.190918 9.64809 0.418855 10.2441 0.843041C10.6687 1.14653 11.1774 1.3101 11.6993 1.311C12.2212 1.31189 12.7305 1.15007 13.1561 0.848041L13.3311 0.723041C14.3241 0.0130408 15.7031 0.723041 15.7031 1.94304V9.50004H19.2031C19.402 9.50004 19.5928 9.57906 19.7335 9.71971C19.8741 9.86036 19.9531 10.0511 19.9531 10.25V15.75C19.9531 16.4794 19.6634 17.1789 19.1477 17.6946C18.6319 18.2103 17.9325 18.5 17.2031 18.5ZM15.9531 11V15.75C15.9531 16.0816 16.0848 16.3995 16.3192 16.6339C16.5537 16.8683 16.8716 17 17.2031 17C17.5346 17 17.8526 16.8683 18.087 16.6339C18.3214 16.3995 18.4531 16.0816 18.4531 15.75V11H15.9531ZM11.7031 6.75004C11.7031 6.55113 11.6241 6.36036 11.4835 6.21971C11.3428 6.07906 11.152 6.00004 10.9531 6.00004H4.95312C4.75421 6.00004 4.56345 6.07906 4.42279 6.21971C4.28214 6.36036 4.20312 6.55113 4.20312 6.75004C4.20312 6.94895 4.28214 7.13972 4.42279 7.28037C4.56345 7.42102 4.75421 7.50004 4.95312 7.50004H10.9531C11.152 7.50004 11.3428 7.42102 11.4835 7.28037C11.6241 7.13972 11.7031 6.94895 11.7031 6.75004ZM10.7031 9.75004C10.7031 9.55113 10.6241 9.36036 10.4835 9.21971C10.3428 9.07906 10.152 9.00004 9.95312 9.00004H4.95312C4.75421 9.00004 4.56345 9.07906 4.42279 9.21971C4.28214 9.36036 4.20312 9.55113 4.20312 9.75004C4.20312 9.94895 4.28214 10.1397 4.42279 10.2804C4.56345 10.421 4.75421 10.5 4.95312 10.5H9.95312C10.152 10.5 10.3428 10.421 10.4835 10.2804C10.6241 10.1397 10.7031 9.94895 10.7031 9.75004ZM10.9531 12C11.152 12 11.3428 12.0791 11.4835 12.2197C11.6241 12.3604 11.7031 12.5511 11.7031 12.75C11.7031 12.949 11.6241 13.1397 11.4835 13.2804C11.3428 13.421 11.152 13.5 10.9531 13.5H4.95312C4.75421 13.5 4.56345 13.421 4.42279 13.2804C4.28214 13.1397 4.20312 12.949 4.20312 12.75C4.20312 12.5511 4.28214 12.3604 4.42279 12.2197C4.56345 12.0791 4.75421 12 4.95312 12H10.9531Z" fill="#F8F8F8"/>
-                    </svg>
-                </x-link>
+            <td class="px-6 py-4 border-r text-txtgray">
+                1
             </td>
-            <td class="px-6 py-4 border-r">
-                <x-link href="{{ route('hewan_pertanggal') }}" color="blue"
-                    class="inline-flex items-center w-[34.78px] h-8 px-2 py-2 mb-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-[#036CA1] rounded-lg shadow-lg focus:outline-none hover:bg-[#036CA1]-700 hover:scale-105 hover:shadow-xl">
-                    <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.58789 1.58691H16.327M4.58789 5.99996H16.327M4.58789 10.413H16.327" stroke="#F8F8F8" stroke-width="1.8913" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1.32796 2.21741C1.68814 2.21741 1.98013 1.93516 1.98013 1.58698C1.98013 1.2388 1.68814 0.956543 1.32796 0.956543C0.967769 0.956543 0.675781 1.2388 0.675781 1.58698C0.675781 1.93516 0.967769 2.21741 1.32796 2.21741Z" stroke="#F8F8F8" stroke-width="1.26087" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1.32796 6.6305C1.68814 6.6305 1.98013 6.34824 1.98013 6.00006C1.98013 5.65188 1.68814 5.36963 1.32796 5.36963C0.967769 5.36963 0.675781 5.65188 0.675781 6.00006C0.675781 6.34824 0.967769 6.6305 1.32796 6.6305Z" stroke="#F8F8F8" stroke-width="1.26087" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1.32796 11.0436C1.68814 11.0436 1.98013 10.7613 1.98013 10.4131C1.98013 10.065 1.68814 9.78271 1.32796 9.78271C0.967769 9.78271 0.675781 10.065 0.675781 10.4131C0.675781 10.7613 0.967769 11.0436 1.32796 11.0436Z" stroke="#F8F8F8" stroke-width="1.26087" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </x-link>
+            <td class="px-6 py-4 w- border-r font-normal">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            Lorem Ipsum has been the industry's standard dummy text 
+            ever since the 1500s.
             </td>
         </tr>
     </tbody>
-    </x-table>
+    </table>
 </div>
+
+<!-- Diagnosis -->
+ <div>
+    <div class="font-semibold text-base my-3">Obat</div>
+        <table class="w-fit text-left rtl:text-right">
+            <thead class="text-gray-500 bg-gray-100 border-b border-gray-200">
+
+            </thead>
+            <tbody class="bg-white font-semibold text-sm">
+
+            </tbody>
+        </table>
+ </div>
 @endsection

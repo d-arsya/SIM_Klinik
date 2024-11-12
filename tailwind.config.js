@@ -21,6 +21,7 @@ export default {
         alert: '#D81A48',
         hovAlert: '#F01E51',
         bgAlert: 'rgba(248, 40, 90, 0.2)',
+        bgRawat: 'rgba(211, 158, 0, 0.33)',
       }
     },
   },
