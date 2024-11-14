@@ -29,7 +29,7 @@
     
 
         <!-- Province, City, District, Village Dropdowns -->
-        <!-- <div class="grid grid-cols-4 gap-[10px] col-span-3 col-start-2">
+        <div class="grid grid-cols-4 gap-[10px] col-span-3 col-start-2">
             <select name="provinsi_id" id="provinsi_id" class="mt-2 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 <option value="">Pilih Provinsi</option>
                 @foreach ($provinsis as $provinsi)
@@ -46,7 +46,7 @@
                 <option value="">Pilih Kecamatan</option>
                 @foreach ($kecamatans as $kecamatan)
                     <option value="{{ $kecamatan->id }}">{{ $kecamatan->nama_kecamatan }}</option>
-                @endforeach
+                @endforeach 
             </select>
             <select name="desa_id" id="desa_id" class="mt-2 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 <option value="">Pilih Desa</option>
@@ -54,7 +54,7 @@
                     <option value="{{ $desa->id }}">{{ $desa->nama_desa }}</option>
                 @endforeach
             </select>
-        </div> -->
+        </div>
 
         <div class="col-span-4 place-self-end">
             <x-button 
@@ -63,6 +63,7 @@
             type="button" 
             color="blue" 
             class="w-[137px]"
+            id="submitButton"
             onclick="openModalAndSubmit(event, 'tambah-pasien')">Submit</x-button>
         </div>
     </div>
@@ -73,6 +74,44 @@
 </x-pop-up>
 
 <script>
+document.getElementById('submitButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default action if necessary
+
+    // Get form data using FormData API
+    const formElement = document.getElementById('submitForm');
+    const formData = new FormData(formElement);
+
+    // Convert FormData to a plain object
+    const formObject = {};
+    formData.forEach((value, key) => {
+        formObject[key] = value;
+    });
+
+    // Send data to an API using fetch
+    fetch('https://example.com/api/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formObject)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+            alert('Form submitted successfully!');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error submitting the form.');
+         });
+    });
+</script>
+<!-- <script>
     function openModalAndSubmit(event, modalId) {
         event.preventDefault();
         // Tampilkan pop-up
@@ -84,4 +123,4 @@
             form.submit();
         }, 1000); // Menambahkan sedikit jeda untuk memastikan pop-up tampil sebelum submit
     }
-</script>
+</script> -->

@@ -7,7 +7,7 @@
       <ul class="space-y-2 font-medium">
          <!-- Home -->
          <li>
-            <a href="{{ route('dashboard')}}" class="flex items-center p-2 text-white rounded-lg hover:text-white hover:bg-hovWhite group">
+            <a href="{{ route('dashboard')}}" :aria-selected="request()->is('dashboard')" class="flex items-center p-2 text-white rounded-lg aria-selected:bg-white aria-selected:text-klinikBlue hover:text-white hover:bg-hovWhite group">
                 <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                   <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
                </svg>
@@ -47,7 +47,7 @@
 
          <!-- List Rawat Inap -->
          <li>
-            <a href="#" class="flex items-center p-2 text-white rounded-lg hover:text-white hover:bg-hovWhite group">
+            <a href="{{ route('list_rawatinap') }}" class="flex items-center p-2 text-white rounded-lg hover:text-white hover:bg-hovWhite group">
                <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13.5 3H17.25V20.25H0.75V3H4.5V4.5H13.5V3ZM3.75 10.5H14.25V9H3.75V10.5ZM3.75 16.5H14.25V15H3.75V16.5ZM6 3V0.75H12V3H6Z" fill="currentColor"/>
                </svg>

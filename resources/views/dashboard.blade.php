@@ -53,6 +53,7 @@
          </div>
      </div>
 
+    <!-- Selamat Datang -->
     <div class="flex flex-col shadow border rounded-xl justify-center p-10 bg-center bg-origin-content" style="background-image: url('{{ asset('img/bg-dashboard.png') }}'); background-size: cover; z-index: -1;">
         <img class="w-9 h-9 rounded-full border" src="img/dashboard-img.png" alt="Foto Dashboard">
         <h2 class="text-[22px] mt-[14px] font-semibold">Selamat Datang, Gurdi!</h2>

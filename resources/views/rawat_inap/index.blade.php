@@ -1,8 +1,7 @@
 @extends('layout.app')
-@section('title', 'List Invoice')
 @section('content')
     <div class="flex flex-col justify-between px-8">
-        <h1 class="text-lg font-bold">List Invoice</h1>
+        <h1 class="text-lg font-bold">List Rawat Inap</h1>
         <h1 style="font-size: 0.9rem">Jumlah Pasien : 49,000 Jumlah Dokter : 12</h1>
     </div>
 
@@ -15,8 +14,11 @@
                     <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Cari..."
                         class="w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5054 10.203C12.3645 9.16492 12.8809 7.83273 12.8809 6.37994C12.8809 3.06624 10.1946 0.379944 6.88086 0.379944C3.56715 0.379944 0.880859 3.06624 0.880859 6.37994C0.880859 9.69365 3.56715 12.3799 6.88086 12.3799C8.33367 12.3799 9.66587 11.8636 10.704 11.0044L13.1468 13.4473C13.3681 13.6686 13.7269 13.6686 13.9482 13.4473C14.1695 13.226 14.1695 12.8672 13.9482 12.6459L11.5054 10.203ZM6.88086 11.2679C4.1813 11.2679 1.99288 9.0795 1.99288 6.37994C1.99288 3.68039 4.1813 1.49197 6.88086 1.49197C9.58041 1.49197 11.7688 3.68039 11.7688 6.37994C11.7688 9.0795 9.58041 11.2679 6.88086 11.2679Z" fill="#99A1B7"/>
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zm-5.9-3.82a6 6 0 1112 0 6 6 0 01-12 0z"
+                                clip-rule="evenodd"></path>
                         </svg>
                     </div>
                 </div>
@@ -65,15 +67,13 @@
                             <th scope="col" class="px-6 py-3 text-center border-r border-gray-100"
                                 style="font-size: 0.81rem">Pasien</th>
                             <th scope="col" class="px-6 py-3 text-center border-r border-gray-100"
-                                style="font-size: 0.81rem">Owner</th>
+                                style="font-size: 0.81rem">Owner Pasien</th>
+                            <th scope="col" class="px-6 py-3 text-center border-r border-gray-100"
+                                style="font-size: 0.81rem">Umur</th>
                             <th scope="col" class="px-6 py-3 text-center border-r border-gray-100"
                                 style="font-size: 0.81rem">No Telp</th>
                             <th scope="col" class="px-6 py-3 text-center border-r border-gray-100"
-                                style="font-size: 0.81rem">Total</th>
-                            <th scope="col" class="px-6 py-3 text-center border-r border-gray-100"
-                                style="font-size: 0.81rem">Status</th>
-                            <th scope="col" class="px-6 py-3 text-center border-r border-gray-100"
-                                style="font-size: 0.81rem">Invoice</th>
+                                style="font-size: 0.81rem">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,83 +84,28 @@
                                 style="font-size: 0.8rem">29/05/2024</td>
                             <td class="px-6 py-4 font-semibold border-r border-gray-100 " style="font-size: 0.8rem">1</td>
                             <td class="px-6 py-4 border-r border-gray-100" style="font-size: 0.8rem">
-                                <a href="#" class="font-semibold underline text-[#036CA1]">Garaga</a>
-                                <p style="font-size: 0.8em" >Ular</p>
+                                <a href="{{ route('detail_hewan') }}" class="font-semibold underline text-[#036CA1]">Garaga</a>
+                                <p style="font-size: 0.8em">Ular</p>
                             </td>
-                            <td class="px-6 py-4 text-center border-r border-gray-100 text-[#036CA1] underline" style="font-size: 0.8rem">
-                                <a href="#">Yoga</a></td>
+                            <td class="px-6 py-4 text-center border-r border-gray-100 text-[#036CA1] underline"
+                                style="font-size: 0.8rem">
+                                <a href="{{ route('detail_owner') }}">Yoga</a>
+                            </td>
+                            <td class="px-6 py-4 text-center border-r border-gray-100" style="font-size: 0.8rem">
+                                2 Tahun</td>
                             <td class="px-6 py-4 text-center border-r border-gray-100" style="font-size: 0.8rem">
                                 087799007654</td>
-                            <td class="px-6 py-4 border-r border-gray-100" style="font-size: 0.8rem">Rp
-                                150.000,00</td>
                             <td class="px-6 py-4 text-center border-r border-gray-100">
-                                <div class="flex items-center w-[115px] py-2 pl-2 space-x-2 border border-pink-200 rounded-full bg-pink-50"
-                                    style="font-size: 0.8rem">
-                                    <span class="w-1.5 h-1.5 bg-pink-500 rounded-full"></span>
-                                    <span class="font-semibold text-pink-600">Belum Lunas</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-center border-r border-gray-100">
-                                <x-link 
-                                data-modal-target="detail-invoice" 
-                                data-modal-toggle="detail-invoice"
-                                color="blue"
-                                href="#">
-                                    <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        fill="currentColor" viewBox="0 0 24 24">
-                                        <path fill-rule="evenodd"
-                                            d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Zm-6 8a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z"
-                                            clip-rule="evenodd" />
+                                <x-link href="{{ route('hewan_pertanggal') }}" color="blue">
+                                    <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 10.7H2.11111V7.3H0V10.7ZM0 17.5H2.11111V14.1H0V17.5ZM0 3.9H2.11111V0.5H0V3.9ZM4.22222 10.7H19V7.3H4.22222V10.7ZM4.22222 17.5H19V14.1H4.22222V17.5ZM4.22222 0.5V3.9H19V0.5H4.22222Z" fill="#F8F8F8"/>
                                     </svg>
                                 </x-link>
-                                
                             </td>
                         </tr>
-                        <tr class="bg-white dark:bg-gray-800 dark:border-gray-700">
-                            <td class="px-6 py-4 font-semibold border-r border-gray-100" style="font-size: 0.8rem">INV-2
-                            </td>
-                            <td class="px-6 py-4 font-semibold text-center border-r border-gray-100"
-                                style="font-size: 0.8rem">11/05/2024</td>
-                            <td class="px-6 py-4 font-semibold border-r border-gray-100 " style="font-size: 0.8rem">2</td>
-                            <td class="px-6 py-4 border-r border-gray-100" style="font-size: 0.8rem">
-                                <a href="#" class="font-semibold underline text-[#036CA1]">Molmo</a>
-                                <p style="font-size: 0.8em">Anjing</p>
-                            </td>
-                            <td class="px-6 py-4 text-center border-r border-gray-100 text-[#036CA1] underline" style="font-size: 0.8rem">
-                                <a href="#">Andi</a></td>
-                            <td class="px-6 py-4 text-center border-r border-gray-100" style="font-size: 0.8rem">
-                                085509094343</td>
-                            <td class="px-6 py-4 border-r border-gray-100" style="font-size: 0.8rem">Rp
-                                50.000,00</td>
-                            <td class="px-6 py-4 text-center border-r border-gray-100">
-                                <div class="flex items-center w-20 py-2 pl-2 space-x-2 border border-green-200 rounded-full bg-green-50"
-                                    style="font-size: 0.8rem">
-                                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                                    <span class="font-semibold text-green-600">Lunas</span>
-                                </div>
-
-                            </td>
-                            <td class="px-6 py-4 text-center border-r border-gray-100">
-                                <a href="#"
-                                    class="inline-flex items-center px-2 py-2 mb-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-[#036CA1] rounded-lg shadow-lg focus:outline-none hover:bg-[#036CA1]-700 hover:scale-105 hover:shadow-xl dark:focus:ring-blue-900">
-                                    <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        fill="currentColor" viewBox="0 0 24 24">
-                                        <path fill-rule="evenodd"
-                                            d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Zm-6 8a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                            </td>
-                        </tr>
-
                     </tbody>
                 </table>
             </div>
-            <x-pop-up id="detail-invoice" header="Detail Invoice" class="hidden">
-                @include('invoice.detail_invoice')
-            </x-pop-up>
 
             <!-- Pagination with Rows Per Page Selector -->
             {{-- <div class="flex items-center justify-between mt-4 text-sm text-gray-700">

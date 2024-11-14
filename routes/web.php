@@ -24,10 +24,10 @@ use App\Http\Controllers\PasienController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::view('/dashboard', 'dashboard')->name('dashboard');
+Route::view('/dashboard', 'dashboard.index')->name('dashboard');
 
 Route::resource('owner', OwnerController::class);
 Route::resource('pasien', PasienController::class);
@@ -37,11 +37,15 @@ Route::get('/antrian/pasien', [AntrianPasienController::class, 'index'])->name('
 
 
 Route::view('/daftar-pasien', 'daftar.daftar_pasien')->name('daftar_pasien');
-Route::view('/list-rawat-inap', 'rawatinap.list_rawatinap')->name('list_rawatinap');
+Route::view('/list-rawat-inap', 'rawat_inap.index')->name('list_rawatinap');
 Route::view('/profile', 'profile.index')->name('profile');
 Route::view('/detail-owner', 'antrian.detail_owner')->name('detail_owner');
 Route::view('/detail-hewan', 'antrian.detail_hewan')->name('detail_hewan');
+Route::view('/detail-hewan-pertanggal', 'antrian.detail_hewan_pertanggal')->name('hewan_pertanggal');
 Route::view('/cetak-invoice', 'invoice.cetak_invoice')->name('cetak_invoice');
+Route::view('/edit-owner', 'antrian.edit_owner')->name('edit_owner');
+Route::view('/login', 'auth.login')->name('login');
+Route::view('/forgot-password', 'auth.forgot-password')->name('forgot');
 
 
 Route::prefix('masterdata')->as('masterdata.')->group(function () {
