@@ -12,7 +12,7 @@ class CreateRekamMedisTable extends Migration
         Schema::create('rekam_medis', function (Blueprint $table) {
             $table->id('id_rm');
             // $table->foreignId('id_pasien')->constrained('pasien')->onDelete('cascade');
-            $table->foreignIdFor(Pasien::class)->onDelete('cascade');
+            $table->foreignId('id_pasien')->constrained('pasien','id_pasien')->onDelete('cascade');
             $table->timestamps();
         });
     }

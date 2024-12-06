@@ -1,4 +1,17 @@
 <div id="{{ $id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)]">
+    
+    <div class="flex items-start justify-center border-b">
+        @isset($navbar1)
+            <div class="flex items-center bg-gray-100 justify-center px-[30px] md:px-[30px] border-b-2">
+                {!! $navbar1 !!}
+            </div>
+        @endisset
+        @isset($navbar2)
+            <div class="flex items-center bg-gray-100 justify-center px-[30px] md:px-[30px] border-b-2">
+                {!! $navbar2 !!}
+            </div>
+        @endisset
+    </div>
     <div class="relative max-h-[80vh] p-4 w-{{ $width }}">
         <!-- Modal header -->
         <div class="flex items-center rounded-t-xl bg-white justify-between h-[56px] px-[30px] md:px-[30px] border-b">

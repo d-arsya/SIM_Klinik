@@ -12,8 +12,8 @@ class CreateKecamatanTable extends Migration
         Schema::create('kecamatan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kecamatan');
-            // $table->foreignId('id_kabupaten')->constrained('kabupaten')->onDelete('cascade');
-            $table->foreignIdFor(Kabupaten::class)->onDelete('cascade');
+            $table->foreignId('id_kabupaten')->constrained('kabupaten')->onDelete('cascade');
+            // $table->foreignIdFor(Kabupaten::class)->onDelete('cascade');
             $table->timestamps();
         });
     }

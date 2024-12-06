@@ -12,8 +12,8 @@ class CreateDiagnosaTable extends Migration
         Schema::create('diagnosa', function (Blueprint $table) {
             $table->id('id_diagnosa');
             $table->string('hasil_diagnosa');
-            // $table->foreignId('id_jenis_hewan')->constrained('hewan')->onDelete('cascade');
-            $table->foreignIdFor(Hewan::class)->onDelete('cascade');
+            $table->foreignId('hewan_id')->constrained('hewan','id_jenis_hewan')->onDelete('cascade');
+            // $table->foreignIdFor(Hewan::class)->onDelete('cascade');
             $table->timestamps();
         });
     }

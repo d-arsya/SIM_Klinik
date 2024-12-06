@@ -10,6 +10,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\AntrianPasienController;
+use App\Http\Controllers\AntrianPasienDokterController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
@@ -26,7 +27,7 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -36,11 +37,22 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::resource('owner', OwnerController::class);
 Route::resource('pasien', PasienController::class);
 Route::get('/antrian-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
+Route::get('/antrian-pasien-dokter', [AntrianPasienDokterController::class, 'index'])->name('antrian_pasien_dokter');
 Route::get('/tambah-pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
 Route::get('/antrian/pasien', [AntrianPasienController::class, 'index'])->name('antrian_pasien');
 
 
 Route::view('/daftar-pasien', 'daftar.daftar_pasien')->name('daftar_pasien');
+Route::view('/profile-daftar-pasien', 'daftar.profil_pasien')->name('profile_pasien');
+Route::view('/detail-hewan-pertanggal', 'daftar.detail_hewan_pertanggal')->name('hewan_pertanggal');
+
+Route::view('/daftar-dokter', 'daftar_dokter.daftar_pasien')->name('daftar_dokter');
+Route::view('/profile-daftar-dokter', 'daftar_dokter.profil_pasien')->name('profile_dokter');
+Route::view('/detail-owner-dokter', 'daftar_dokter.detail_owner_dokter')->name('detail_owner_dokter');
+Route::view('/detail-hewan-pertanggal-dokter', 'daftar_dokter.detail_pertanggal')->name('hewan_pertanggal_dokter');
+Route::view('/detail-rawatinap-pertanggal-dokter', 'daftar_dokter.rawatinap_pertanggal')->name('rawatinap_pertanggal_dokter');
+Route::view('/tambah-obat-rawatinap', 'daftar_dokter.tambah_obat')->name('rawatinap_tambah_obat');
+
 Route::view('/list-rawat-inap', 'rawat_inap.index')->name('list_rawatinap');
 Route::view('/profile', 'profile.index')->name('profile');
 Route::view('/detail-owner', 'antrian.detail_owner')->name('detail_owner');
@@ -48,6 +60,7 @@ Route::view('/detail-hewan', 'antrian.detail_hewan')->name('detail_hewan');
 Route::view('/detail-hewan-pertanggal', 'antrian.detail_hewan_pertanggal')->name('hewan_pertanggal');
 Route::view('/cetak-invoice', 'invoice.cetak_invoice')->name('cetak_invoice');
 Route::view('/edit-owner', 'antrian.edit_owner')->name('edit_owner');
+Route::view('/edit-hewan', 'antrian.edit_hewan')->name('edit_hewan');
 Route::view('/forgot-password', 'auth.forgot-password')->name('forgot');
 
 

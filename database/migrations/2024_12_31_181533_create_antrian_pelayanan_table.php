@@ -14,8 +14,14 @@ class CreateAntrianPelayananTable extends Migration
             $table->id('id_antrian_pelayanan');
             // $table->foreignId('id_antrian')->constrained('antrian')->onDelete('cascade');
             // $table->foreignId('id_pelayanan')->constrained('pelayanan')->onDelete('cascade');
-            $table->foreignIdFor(Antrian::class)->onDelete('cascade');
-            $table->foreignIdFor(Pelayanan::class)->onDelete('cascade');
+            // $table->foreignIdFor(Antrian::class)->onDelete('cascade');
+            // $table->foreignIdFor(Pelayanan::class)->onDelete('cascade');
+            $table->foreignId('id_antrian')
+            ->constrained('antrian', 'id_antrian') // Sesuaikan nama kolom primary key
+            ->onDelete('cascade');
+            $table->foreignId('id_pelayanan')
+            ->constrained('pelayanan', 'id_pelayanan') // Sesuaikan nama kolom primary key
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@ export default {
         hovAlert: '#F01E51',
         bgAlert: 'rgba(248, 40, 90, 0.2)',
         bgRawat: 'rgba(211, 158, 0, 0.33)',
+        bulkStroke: 'rgba(27, 132, 255, 0.2)',
       }
     },
   },

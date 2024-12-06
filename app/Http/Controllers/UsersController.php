@@ -38,7 +38,7 @@ class UsersController extends Controller
         $users->role = $request->role;
         $users->save();
 
-        return route('masterdata.users.index');
+        return redirect()->route('masterdata.users.index');
     }
 
     /**

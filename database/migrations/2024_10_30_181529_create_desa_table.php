@@ -12,7 +12,8 @@ class CreateDesaTable extends Migration
         Schema::create('desa', function (Blueprint $table) {
             $table->id();
             $table->string('nama_desa');
-            $table->foreignIdFor(Kecamatan::class)->onDelete('cascade');
+            // $table->foreignIdFor(Kecamatan::class)->onDelete('cascade');
+            $table->foreignId('id_kecamatan')->constrained('kecamatan')->onDelete('cascade');
             $table->timestamps();
         });
     }

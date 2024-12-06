@@ -9,6 +9,6 @@ class DashboardController extends Controller
     public function index()
     {
         // Mengirimkan data ke view dashboard jika diperlukan
-        return view('dashboard');
+        return view('dashboard.index');
     }
 }

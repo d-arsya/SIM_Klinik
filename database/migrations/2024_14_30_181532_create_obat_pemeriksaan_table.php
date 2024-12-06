@@ -14,8 +14,12 @@ class CreateObatPemeriksaanTable extends Migration
             $table->id('id_obat_pemeriksaan');
             // $table->foreignId('id_hasil_pemeriksaan')->constrained('hasil_pemeriksaan')->onDelete('cascade');
             // $table->foreignId('id_obat')->constrained('stok_obat')->onDelete('cascade');
-            $table->foreignIdFor(HasilPemeriksaan::class)->onDelete('cascade');
-            $table->foreignIdFor(StokObat::class)->onDelete('cascade');
+            $table->foreignId('id_hasil_pemeriksaan')
+                ->constrained('hasil_pemeriksaan', 'id_hasil_pemeriksaan') // Jika primary key juga berbeda
+                ->onDelete('cascade');
+            $table->foreignId('id_obat')
+                ->constrained('stok_obat', 'id_obat') // Jika primary key juga berbeda
+                ->onDelete('cascade');
             $table->integer('jumlah');
             $table->timestamps();
         });

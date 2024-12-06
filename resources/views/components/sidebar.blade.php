@@ -1,5 +1,5 @@
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-[280px] h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-   <div class="h-full px-3 py-4 overflow-y-auto bg-klinikBlue">
+<aside id="logo-sidebar" class="fixed w-2/12 top-0 left-0 z-40 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+   <div class="h-full px-5 py-4 overflow-y-auto bg-klinikBlue">
       <a href="#" class="flex items-center mb-5">
          <img src="{{ asset('img/logo.png') }}" class="h-[90px]" alt="Drh. Hendrik TS Logo" />
          <span class="self-center text-{17.51px} font-semibold text-white whitespace-nowrap ms-1">Praktek Mandiri <br>Drh. Hendrik TS</span>
@@ -7,8 +7,8 @@
       <ul class="space-y-2 font-medium">
          <!-- Home -->
          <li>
-            <a href="{{ route('dashboard')}}" :aria-selected="request()->is('dashboard')" class="flex items-center p-2 text-white rounded-lg aria-selected:bg-white aria-selected:text-klinikBlue hover:text-white hover:bg-hovWhite group">
-                <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+            <a href="{{ route('dashboard')}}" class="flex items-center p-2 rounded-lg {{ request()->routeIs('dashboard') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }} group">
+                <svg class="flex-shrink-0 w-5 h-5 {{ request()->routeIs('dashboard') ? 'text-klinikBlue' : 'text-white group-hover:text-white'}}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                   <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
                </svg>
                <span class="flex-1 ms-3 whitespace-nowrap">Home</span>
@@ -17,28 +17,49 @@
 
          <!-- Antrian Pasien -->
          <li>
-            <a href="{{ route('antrian_pasien') }}" class="flex items-center p-2 text-white rounded-lg hover:text-white hover:bg-hovWhite group">
-               <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="{{ route('antrian_pasien') }}" 
+               class="flex items-center p-2 rounded-lg group {{ request()->routeIs('antrian_pasien') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
+               <svg class="flex-shrink-0 w-5 h-5 {{ request()->routeIs('antrian_pasien') ? 'text-klinikBlue' : 'text-white group-hover:text-white'}}" aria-hidden="true" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12.8698 9.116C12.2511 9.116 11.7238 8.89933 11.2878 8.466C10.8518 8.03267 10.6338 7.507 10.6338 6.889C10.6338 6.271 10.8504 5.744 11.2838 5.308C11.7171 4.872 12.2428 4.654 12.8608 4.654C13.4788 4.654 14.0058 4.87067 14.4418 5.304C14.8778 5.73733 15.0958 6.26267 15.0958 6.88C15.0958 7.49733 14.8791 8.02467 14.4458 8.462C14.0124 8.89933 13.4871 9.11733 12.8698 9.116ZM7.63477 14.346V13.216C7.63477 12.998 7.6891 12.7907 7.79777 12.594C7.90643 12.3973 8.0531 12.239 8.23777 12.119C8.9371 11.7203 9.67043 11.415 10.4378 11.203C11.2044 10.991 12.0138 10.885 12.8658 10.885C13.7164 10.885 14.5254 10.991 15.2928 11.203C16.0601 11.415 16.7934 11.7203 17.4928 12.119C17.6768 12.2383 17.8234 12.3967 17.9328 12.594C18.0421 12.7913 18.0964 12.9987 18.0958 13.216V14.346H7.63477ZM0.884766 9V8H7.88477V9H0.884766ZM0.884766 1V0H11.8848V1H0.884766ZM8.69577 5H0.884766V4H9.26877C9.15077 4.15533 9.04343 4.313 8.94676 4.473C8.8501 4.633 8.76577 4.80867 8.69577 5Z" fill="currentColor"/>
                </svg>
                <span class="flex-1 ms-3 whitespace-nowrap">Antrian Pasien</span>
             </a>
          </li>
 
+         <!-- Antrian Pasien Dokter-->
+         <li>
+            <a href="{{ route('antrian_pasien_dokter') }}" class="flex items-center p-2 rounded-lg group {{ request()->routeIs('antrian_pasien_dokter') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
+               <svg class="flex-shrink-0 w-5 h-5 {{ request()->routeIs('antrian_pasien_dokter') ? 'text-klinikBlue' : 'text-white group-hover:text-white'}}" aria-hidden="true" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.8698 9.116C12.2511 9.116 11.7238 8.89933 11.2878 8.466C10.8518 8.03267 10.6338 7.507 10.6338 6.889C10.6338 6.271 10.8504 5.744 11.2838 5.308C11.7171 4.872 12.2428 4.654 12.8608 4.654C13.4788 4.654 14.0058 4.87067 14.4418 5.304C14.8778 5.73733 15.0958 6.26267 15.0958 6.88C15.0958 7.49733 14.8791 8.02467 14.4458 8.462C14.0124 8.89933 13.4871 9.11733 12.8698 9.116ZM7.63477 14.346V13.216C7.63477 12.998 7.6891 12.7907 7.79777 12.594C7.90643 12.3973 8.0531 12.239 8.23777 12.119C8.9371 11.7203 9.67043 11.415 10.4378 11.203C11.2044 10.991 12.0138 10.885 12.8658 10.885C13.7164 10.885 14.5254 10.991 15.2928 11.203C16.0601 11.415 16.7934 11.7203 17.4928 12.119C17.6768 12.2383 17.8234 12.3967 17.9328 12.594C18.0421 12.7913 18.0964 12.9987 18.0958 13.216V14.346H7.63477ZM0.884766 9V8H7.88477V9H0.884766ZM0.884766 1V0H11.8848V1H0.884766ZM8.69577 5H0.884766V4H9.26877C9.15077 4.15533 9.04343 4.313 8.94676 4.473C8.8501 4.633 8.76577 4.80867 8.69577 5Z" fill="currentColor"/>
+               </svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Antrian Pasien (Dokter)</span>
+            </a>
+         </li>
+
          <!-- Daftar Pasien -->
          <li>
-            <a href="{{ route('daftar_pasien') }}" class="flex items-center p-2 text-white rounded-lg hover:text-white hover:bg-hovWhite group">
-               <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="{{ route('daftar_pasien') }}" class="flex items-center p-2 rounded-lg group {{ request()->routeIs('daftar_pasien') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
+               <svg class="flex-shrink-0 w-5 h-5 {{ request()->routeIs('daftar_pasien') ? 'text-klinikBlue' : 'text-white group-hover:text-white'}}" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4.00006 4.5C4.00006 2.29 5.79006 0.5 8.00006 0.5C10.2101 0.5 12.0001 2.29 12.0001 4.5C12.0001 6.71 10.2101 8.5 8.00006 8.5C5.79006 8.5 4.00006 6.71 4.00006 4.5ZM13.0001 20.5H14.0001C15.1001 20.5 16.0001 19.6 16.0001 18.5V13.72C16.0001 12.6 15.3901 11.57 14.3901 11.06C13.9601 10.84 13.5001 10.63 13.0001 10.44V20.5ZM8.34007 15.5L11.0001 9.83C10.0701 9.62 9.07006 9.5 8.00006 9.5C5.47007 9.5 3.29007 10.2 1.61007 11.06C1.12212 11.3113 0.713366 11.6929 0.429165 12.1625C0.144963 12.632 -0.00356536 13.1712 6.49903e-05 13.72V20.5H2.34007C2.12007 20.05 2.00007 19.54 2.00007 19C2.00007 17.07 3.57007 15.5 5.50006 15.5H8.34007ZM6.00006 20.5L7.41006 17.5H5.50006C4.67006 17.5 4.00006 18.17 4.00006 19C4.00006 19.83 4.67006 20.5 5.50006 20.5H6.00006Z" fill="currentColor"/>
                </svg>
                <span class="flex-1 ms-3 whitespace-nowrap">Daftar Pasien</span>
             </a>
          </li>
 
+         <!-- Daftar Pasien Dokter -->
+         <li>
+            <a href="{{ route('daftar_dokter') }}" class="flex items-center p-2 rounded-lg group {{ request()->routeIs('daftar_dokter') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
+               <svg class="flex-shrink-0 w-5 h-5 {{ request()->routeIs('daftar_dokter') ? 'text-klinikBlue' : 'text-white group-hover:text-white'}}" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.00006 4.5C4.00006 2.29 5.79006 0.5 8.00006 0.5C10.2101 0.5 12.0001 2.29 12.0001 4.5C12.0001 6.71 10.2101 8.5 8.00006 8.5C5.79006 8.5 4.00006 6.71 4.00006 4.5ZM13.0001 20.5H14.0001C15.1001 20.5 16.0001 19.6 16.0001 18.5V13.72C16.0001 12.6 15.3901 11.57 14.3901 11.06C13.9601 10.84 13.5001 10.63 13.0001 10.44V20.5ZM8.34007 15.5L11.0001 9.83C10.0701 9.62 9.07006 9.5 8.00006 9.5C5.47007 9.5 3.29007 10.2 1.61007 11.06C1.12212 11.3113 0.713366 11.6929 0.429165 12.1625C0.144963 12.632 -0.00356536 13.1712 6.49903e-05 13.72V20.5H2.34007C2.12007 20.05 2.00007 19.54 2.00007 19C2.00007 17.07 3.57007 15.5 5.50006 15.5H8.34007ZM6.00006 20.5L7.41006 17.5H5.50006C4.67006 17.5 4.00006 18.17 4.00006 19C4.00006 19.83 4.67006 20.5 5.50006 20.5H6.00006Z" fill="currentColor"/>
+               </svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Daftar Pasien (Dokter)</span>
+            </a>
+         </li>
+
          <!-- List Invoice -->
          <li>
-            <a href="{{ route('invoice.list') }}" class="flex items-center p-2 text-white rounded-lg hover:text-white hover:bg-hovWhite group">
-               <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="{{ route('invoice.list') }}" class="flex items-center p-2 rounded-lg group {{ request()->routeIs('invoice*') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
+               <svg class="flex-shrink-0 w-5 h-5 {{ request()->routeIs('invoice.list') ? 'text-klinikBlue' : 'text-white group-hover:text-white'}}" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.5C0 1.23478 0.105357 0.98043 0.292893 0.792893C0.48043 0.605357 0.734784 0.5 1 0.5H15C15.2652 0.5 15.5196 0.605357 15.7071 0.792893C15.8946 0.98043 16 1.23478 16 1.5V19.5C16 19.6912 15.9452 19.8783 15.8421 20.0393C15.7391 20.2003 15.592 20.3284 15.4184 20.4083C15.2447 20.4883 15.0518 20.5169 14.8625 20.4906C14.6731 20.4643 14.4953 20.3843 14.35 20.26L13.317 19.375C13.1358 19.2198 12.9051 19.1345 12.6665 19.1345C12.4279 19.1345 12.1972 19.2198 12.016 19.375L10.984 20.259C10.8027 20.4145 10.5718 20.4999 10.333 20.4999C10.0942 20.4999 9.86327 20.4145 9.682 20.259L8.651 19.375C8.46973 19.2195 8.23881 19.1341 8 19.1341C7.76119 19.1341 7.53027 19.2195 7.349 19.375L6.318 20.259C6.13673 20.4145 5.90581 20.4999 5.667 20.4999C5.42819 20.4999 5.19727 20.4145 5.016 20.259L3.984 19.375C3.8028 19.2198 3.57208 19.1345 3.3335 19.1345C3.09492 19.1345 2.8642 19.2198 2.683 19.375L1.651 20.259C1.50582 20.3835 1.32797 20.4638 1.13855 20.4903C0.949129 20.5168 0.756084 20.4884 0.582304 20.4085C0.408523 20.3286 0.261299 20.2006 0.15809 20.0395C0.0548801 19.8785 1.48665e-05 19.6913 0 19.5V1.5ZM5 4.5C4.73478 4.5 4.48043 4.60536 4.29289 4.79289C4.10536 4.98043 4 5.23478 4 5.5C4 5.76522 4.10536 6.01957 4.29289 6.20711C4.48043 6.39464 4.73478 6.5 5 6.5H11C11.2652 6.5 11.5196 6.39464 11.7071 6.20711C11.8946 6.01957 12 5.76522 12 5.5C12 5.23478 11.8946 4.98043 11.7071 4.79289C11.5196 4.60536 11.2652 4.5 11 4.5H5ZM5 8.5C4.73478 8.5 4.48043 8.60536 4.29289 8.79289C4.10536 8.98043 4 9.23478 4 9.5C4 9.76522 4.10536 10.0196 4.29289 10.2071C4.48043 10.3946 4.73478 10.5 5 10.5H11C11.2652 10.5 11.5196 10.3946 11.7071 10.2071C11.8946 10.0196 12 9.76522 12 9.5C12 9.23478 11.8946 8.98043 11.7071 8.79289C11.5196 8.60536 11.2652 8.5 11 8.5H5ZM6 13.5C6 13.2348 6.10536 12.9804 6.29289 12.7929C6.48043 12.6054 6.73478 12.5 7 12.5H11C11.2652 12.5 11.5196 12.6054 11.7071 12.7929C11.8946 12.9804 12 13.2348 12 13.5C12 13.7652 11.8946 14.0196 11.7071 14.2071C11.5196 14.3946 11.2652 14.5 11 14.5H7C6.73478 14.5 6.48043 14.3946 6.29289 14.2071C6.10536 14.0196 6 13.7652 6 13.5Z" fill="currentColor"/>
                </svg>
                <span class="flex-1 ms-3 whitespace-nowrap">List Invoice</span>
@@ -47,8 +68,8 @@
 
          <!-- List Rawat Inap -->
          <li>
-            <a href="{{ route('list_rawatinap') }}" class="flex items-center p-2 text-white rounded-lg hover:text-white hover:bg-hovWhite group">
-               <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="{{ route('list_rawatinap') }}" class="flex items-center p-2 rounded-lg {{ request()->routeIs('list_rawatinap*') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }} group">
+               <svg class="flex-shrink-0 w-5 h-5 {{ request()->routeIs('list_rawatinap') ? 'text-klinikBlue' : 'text-white group-hover:text-white'}}" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13.5 3H17.25V20.25H0.75V3H4.5V4.5H13.5V3ZM3.75 10.5H14.25V9H3.75V10.5ZM3.75 16.5H14.25V15H3.75V16.5ZM6 3V0.75H12V3H6Z" fill="currentColor"/>
                </svg>
                <span class="flex-1 ms-3 whitespace-nowrap">List Rawat Inap</span>
@@ -57,8 +78,8 @@
 
          <!-- Profile -->
          <li>
-            <a href="{{ route('profile') }}" class="flex items-center p-2 text-white rounded-lg hover:text-white hover:bg-hovWhite group">
-               <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="{{ route('profile') }}" class="flex items-center p-2 rounded-lg {{ request()->routeIs('profile') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }} group">
+               <svg class="flex-shrink-0 w-5 h-5 {{ request()->routeIs('profile') ? 'text-klinikBlue' : 'text-white group-hover:text-white'}}" aria-hidden="true" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path opacity="0.1" d="M18.8621 10.494C18.8657 9.02002 18.5026 7.56827 17.8057 6.26946C17.1087 4.97064 16.0997 3.86553 14.8695 3.0536C13.6392 2.24168 12.2264 1.74842 10.7582 1.61824C9.28991 1.48805 7.81234 1.72503 6.45844 2.30783C5.10455 2.89063 3.91683 3.80097 3.00221 4.95689C2.08758 6.11281 1.47477 7.47803 1.21892 8.92966C0.963066 10.3813 1.07222 11.8738 1.53654 13.2727C2.00086 14.6717 2.80579 15.9332 3.87885 16.9438L4.20134 17.2249H4.25095C4.36672 17.3324 4.49902 17.4234 4.62306 17.5226C4.74709 17.6218 4.80497 17.6632 4.89593 17.7211C5.02585 17.8169 5.16113 17.9052 5.30111 17.9857L5.58225 18.1593C5.72282 18.242 5.87166 18.3164 6.0205 18.3908L6.30992 18.5314L6.76471 18.7216L7.07066 18.8374L7.53372 18.9862L7.88928 19.0772L8.31926 19.1764L8.78232 19.2425L9.13789 19.2922C9.41903 19.2922 9.70017 19.3335 9.96478 19.3335C10.2294 19.3335 10.5271 19.3335 10.7917 19.2922L11.1472 19.2425L11.6103 19.1764L12.0403 19.0772L12.4041 18.9779L12.8589 18.8374L13.1979 18.7629L13.6444 18.5728L13.9421 18.4322L14.3721 18.2007L14.6533 18.027L15.0584 17.7707L15.3313 17.5639C15.4553 17.4647 15.5876 17.3738 15.7034 17.2663H15.753L16.0755 16.9851C16.9613 16.1529 17.6659 15.1469 18.1454 14.03C18.6249 12.9132 18.8689 11.7094 18.8621 10.494Z" fill="currentColor"/>
                   <path d="M18.9577 10.5C18.9612 9.01448 18.5954 7.55142 17.893 6.24249C17.1906 4.93355 16.1737 3.81983 14.9339 3.00158C13.6941 2.18333 12.2702 1.68623 10.7906 1.55503C9.31087 1.42383 7.82178 1.66265 6.45734 2.25C5.0929 2.83734 3.89593 3.75476 2.97418 4.91969C2.05243 6.08462 1.43484 7.46048 1.177 8.92342C0.919155 10.3864 1.02916 11.8905 1.4971 13.3003C1.96504 14.7102 2.77623 15.9815 3.85766 17L4.18266 17.2833H4.23266C4.34932 17.3916 4.48266 17.4833 4.60766 17.5833C4.73266 17.6833 4.79099 17.725 4.88266 17.7833C5.01359 17.8799 5.14993 17.9689 5.29099 18.05L5.57432 18.225C5.71599 18.3083 5.86599 18.3833 6.01599 18.4583L6.30766 18.6L6.76599 18.7916L7.07432 18.9083L7.54099 19.0583L7.89932 19.15L8.33266 19.25L8.79932 19.3166L9.15766 19.3666C9.44099 19.3666 9.72432 19.4083 9.99099 19.4083C10.2577 19.4083 10.5577 19.4083 10.8243 19.3666L11.1827 19.3166L11.6493 19.25L12.0827 19.15L12.4493 19.05L12.9077 18.9083L13.2493 18.8333L13.6993 18.6416L13.9993 18.5L14.4327 18.2666L14.716 18.0916L15.1243 17.8333L15.3993 17.625C15.5243 17.525 15.6577 17.4333 15.7743 17.325H15.8243L16.1493 17.0416C17.042 16.2029 17.7521 15.1891 18.2354 14.0635C18.7186 12.938 18.9644 11.7248 18.9577 10.5ZM2.29099 10.5C2.29099 8.45558 3.10312 6.49494 4.54871 5.04935C5.9943 3.60375 7.95495 2.79163 9.99932 2.79163C12.0437 2.79163 14.0043 3.60375 15.4499 5.04935C16.8955 6.49494 17.7077 8.45558 17.7077 10.5C17.71 12.452 16.9645 14.3307 15.6243 15.75C15.0866 14.7234 14.2781 13.8635 13.2866 13.2636C12.2951 12.6636 11.1582 12.3465 9.99932 12.3465C8.84041 12.3465 7.7036 12.6636 6.71206 13.2636C5.72052 13.8635 4.91208 14.7234 4.37432 15.75C3.03416 14.3307 2.28862 12.452 2.29099 10.5ZM14.5243 16.7333L14.1993 16.9583L13.966 17.0916C13.5568 17.3414 13.1242 17.5507 12.6743 17.7166L12.4077 17.8166L12.0493 17.925L11.7243 18.0083L11.391 18.075L10.9827 18.1416H10.7077C10.4743 18.1416 10.241 18.1416 9.99932 18.1416C9.75766 18.1416 9.52432 18.1416 9.29099 18.1416H9.01599L8.60766 18.075L8.27432 18L7.94932 17.9166L7.59099 17.8083L7.33266 17.7166C6.87874 17.5445 6.44093 17.3325 6.02432 17.0833L5.83266 16.9583L5.50766 16.7333C5.4641 16.6926 5.41665 16.6563 5.36599 16.625C5.76768 15.7228 6.42225 14.9564 7.25049 14.4185C8.07872 13.8807 9.04511 13.5944 10.0327 13.5944C11.0202 13.5944 11.9866 13.8807 12.8148 14.4185C13.6431 14.9564 14.2976 15.7228 14.6993 16.625C14.6371 16.6543 14.5784 16.6907 14.5243 16.7333ZM9.99932 11.7333C10.7012 11.7349 11.3878 11.528 11.9718 11.1387C12.5559 10.7494 13.0111 10.1954 13.2797 9.54692C13.5483 8.89845 13.6181 8.1848 13.4804 7.49656C13.3426 6.80832 13.0035 6.17652 12.506 5.68139C12.0085 5.18625 11.3751 4.8501 10.6862 4.7156C9.99734 4.5811 9.28403 4.65433 8.63684 4.92598C7.98965 5.19764 7.43777 5.65547 7.05126 6.24135C6.66475 6.82724 6.46104 7.51476 6.46599 8.21663C6.46599 9.1545 6.83798 10.0541 7.50037 10.718C8.16276 11.382 9.06146 11.7561 9.99932 11.7583V11.7333ZM9.99932 5.89996C10.4519 5.89834 10.8947 6.03074 11.2721 6.28046C11.6495 6.53018 11.9445 6.88604 12.12 7.30319C12.2954 7.72033 12.3434 8.18007 12.2579 8.62446C12.1725 9.06885 11.9573 9.47798 11.6397 9.80028C11.322 10.1226 10.916 10.3436 10.4729 10.4355C10.0298 10.5274 9.56944 10.4861 9.1498 10.3167C8.73016 10.1473 8.37006 9.85752 8.1149 9.48378C7.85973 9.11005 7.72093 8.66913 7.71599 8.21663C7.71599 7.61105 7.95656 7.03028 8.38476 6.60207C8.81297 6.17386 9.39375 5.93329 9.99932 5.93329V5.89996Z" fill="currentColor"/>
                </svg>
@@ -68,19 +89,27 @@
 
          <!-- Master Data -->
          <li>
-            <button type="button" class="flex items-center w-full p-2 text-white rounded-lg hover:text-white hover:bg-hovWhite group" aria-controls="dropdown-masterdata" data-collapse-toggle="dropdown-masterdata">
-               <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19 5.5C19 7.71 14.97 9.5 10 9.5C5.03 9.5 1 7.71 1 5.5C1 3.29 5.03 1.5 10 1.5C14.97 1.5 19 3.29 19 5.5Z" fill="currentColor"/>
-                  <path d="M19 5.5C19 7.71 14.97 9.5 10 9.5C5.03 9.5 1 7.71 1 5.5M19 5.5C19 3.29 14.97 1.5 10 1.5C5.03 1.5 1 3.29 1 5.5M19 5.5V10.5M1 5.5V10.5M1 10.5C1 12.71 5.03 14.5 10 14.5M1 10.5V15.5C1 17.71 5.03 19.5 10 19.5M16 13.5V16.5M16 16.5V19.5M16 16.5H19M16 16.5H13" fill="currentColor" stroke="#F8F8F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <button type="button" 
+               class="flex items-center w-full p-2 rounded-lg hover:text-white hover:bg-hovWhite text-white group" 
+               aria-controls="dropdown-masterdata" 
+               data-collapse-toggle="dropdown-masterdata">
+               <svg width="24" height="25" class="" viewBox="0 0 24 25" aria-hidden="true"  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 7.5C21 9.71 16.97 11.5 12 11.5C7.03 11.5 3 9.71 3 7.5C3 5.29 7.03 3.5 12 3.5C16.97 3.5 21 5.29 21 7.5Z" fill="currentColor"/>
+                  <path d="M21 7.5C21 9.71 16.97 11.5 12 11.5C7.03 11.5 3 9.71 3 7.5M21 7.5C21 5.29 16.97 3.5 12 3.5C7.03 3.5 3 5.29 3 7.5M21 7.5V12.5M3 7.5V12.5M3 12.5C3 14.71 7.03 16.5 12 16.5M3 12.5V17.5C3 19.71 7.03 21.5 12 21.5M18 15.5V18.5M18 18.5V21.5M18 18.5H21M18 18.5H15" stroke="#F8F8F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                </svg>
+
+               <!-- <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M19 5.5C19 7.71 14.97 9.5 10 9.5C5.03 9.5 1 7.71 1 5.5C1 3.29 5.03 1.5 10 1.5C14.97 1.5 19 3.29 19 5.5Z" fill="currentColor"/>
+                     <path d="M19 5.5C19 7.71 14.97 9.5 10 9.5C5.03 9.5 1 7.71 1 5.5M19 5.5C19 3.29 14.97 1.5 10 1.5C5.03 1.5 1 3.29 1 5.5M19 5.5V10.5M1 5.5V10.5M1 10.5C1 12.71 5.03 14.5 10 14.5M1 10.5V15.5C1 17.71 5.03 19.5 10 19.5M16 13.5V16.5M16 16.5V19.5M16 16.5H19M16 16.5H13" fill="currentColor" stroke="#F8F8F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg> -->
                <span class="flex-1 text-left ms-3 whitespace-nowrap">Master Data</span>
                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                </svg>
             </button>
-            <ul id="dropdown-masterdata" class="hidden py-2 space-y-2">
+            <ul id="dropdown-masterdata" class="{{ request()->routeIs('masterdata*') ? 'block' : 'hidden' }} py-2 space-y-2">
                <li>
-                  <a href="{{ route('masterdata.diagnosa.index') }}" class="flex items-center  p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-hovWhite">
+                  <a href="{{ route('masterdata.diagnosa.index') }}" class="flex items-center  p-2 transition duration-75 rounded-lg pl-11 group {{ request()->routeIs('masterdata.diagnosa*') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
                   <svg class="me-3" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <rect width="15" height="15" rx="7.5" fill="currentColor"/>
                      <path opacity="0.1" d="M14.1461 7.4954C14.1488 6.38989 13.8765 5.30108 13.3538 4.32697C12.831 3.35286 12.0743 2.52403 11.1516 1.91508C10.2289 1.30613 9.16931 0.936192 8.06813 0.838555C6.96694 0.740917 5.85876 0.918648 4.84334 1.35575C3.82792 1.79285 2.93713 2.4756 2.25117 3.34254C1.5652 4.20949 1.10559 5.2334 0.913699 6.32212C0.721811 7.41085 0.803673 8.5302 1.15192 9.57942C1.50016 10.6286 2.10385 11.5748 2.90865 12.3327L3.15052 12.5436H3.18773C3.27455 12.6242 3.37378 12.6924 3.4668 12.7668C3.55983 12.8412 3.60324 12.8723 3.67146 12.9157C3.7689 12.9875 3.87036 13.0538 3.97534 13.1141L4.1862 13.2444C4.29163 13.3064 4.40326 13.3622 4.51489 13.418L4.73195 13.5234L5.07304 13.6661L5.3025 13.7529L5.6498 13.8645L5.91647 13.9327L6.23896 14.0072L6.58625 14.0568L6.85293 14.094C7.06378 14.094 7.27464 14.125 7.47309 14.125C7.67155 14.125 7.89481 14.125 8.09326 14.094L8.35994 14.0568L8.70723 14.0072L9.02972 13.9327L9.30259 13.8583L9.64369 13.7529L9.89795 13.6971L10.2328 13.5544L10.4561 13.449L10.7786 13.2754L10.9895 13.1451L11.2933 12.9529L11.498 12.7978C11.591 12.7234 11.6902 12.6552 11.7771 12.5746H11.8143L12.0561 12.3637C12.7205 11.7395 13.249 10.985 13.6086 10.1474C13.9682 9.30976 14.1512 8.40695 14.1461 7.4954Z" fill="currentColor"/>
@@ -89,7 +118,7 @@
                   Diagnosa</a>
                </li>
                <li>
-                  <a href="{{ route('masterdata.ras.index') }}" class="flex items-center  p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-hovWhite">
+                  <a href="{{ route('masterdata.ras.index') }}" class="flex items-center  p-2 transition duration-75 rounded-lg pl-11 group {{ request()->routeIs('masterdata.ras*') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
                      <svg class="me-3" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="15" height="15" rx="7.5" fill="currentColor"/>
                      <path opacity="0.1" d="M14.1461 7.4954C14.1488 6.38989 13.8765 5.30108 13.3538 4.32697C12.831 3.35286 12.0743 2.52403 11.1516 1.91508C10.2289 1.30613 9.16931 0.936192 8.06813 0.838555C6.96694 0.740917 5.85876 0.918648 4.84334 1.35575C3.82792 1.79285 2.93713 2.4756 2.25117 3.34254C1.5652 4.20949 1.10559 5.2334 0.913699 6.32212C0.721811 7.41085 0.803673 8.5302 1.15192 9.57942C1.50016 10.6286 2.10385 11.5748 2.90865 12.3327L3.15052 12.5436H3.18773C3.27455 12.6242 3.37378 12.6924 3.4668 12.7668C3.55983 12.8412 3.60324 12.8723 3.67146 12.9157C3.7689 12.9875 3.87036 13.0538 3.97534 13.1141L4.1862 13.2444C4.29163 13.3064 4.40326 13.3622 4.51489 13.418L4.73195 13.5234L5.07304 13.6661L5.3025 13.7529L5.6498 13.8645L5.91647 13.9327L6.23896 14.0072L6.58625 14.0568L6.85293 14.094C7.06378 14.094 7.27464 14.125 7.47309 14.125C7.67155 14.125 7.89481 14.125 8.09326 14.094L8.35994 14.0568L8.70723 14.0072L9.02972 13.9327L9.30259 13.8583L9.64369 13.7529L9.89795 13.6971L10.2328 13.5544L10.4561 13.449L10.7786 13.2754L10.9895 13.1451L11.2933 12.9529L11.498 12.7978C11.591 12.7234 11.6902 12.6552 11.7771 12.5746H11.8143L12.0561 12.3637C12.7205 11.7395 13.249 10.985 13.6086 10.1474C13.9682 9.30976 14.1512 8.40695 14.1461 7.4954Z" fill="currentColor"/>
@@ -98,7 +127,7 @@
                   Ras Hewan</a>
                </li>
                <li>
-                  <a href="#" class="flex items-center  p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-hovWhite">
+                  <a href="{{ route('masterdata.warna.index') }}" class="flex items-center  p-2 transition duration-75 rounded-lg pl-11 group {{ request()->routeIs('masterdata.warna*') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
                   <svg class="me-3" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <rect width="15" height="15" rx="7.5" fill="currentColor"/>
                      <path opacity="0.1" d="M14.1461 7.4954C14.1488 6.38989 13.8765 5.30108 13.3538 4.32697C12.831 3.35286 12.0743 2.52403 11.1516 1.91508C10.2289 1.30613 9.16931 0.936192 8.06813 0.838555C6.96694 0.740917 5.85876 0.918648 4.84334 1.35575C3.82792 1.79285 2.93713 2.4756 2.25117 3.34254C1.5652 4.20949 1.10559 5.2334 0.913699 6.32212C0.721811 7.41085 0.803673 8.5302 1.15192 9.57942C1.50016 10.6286 2.10385 11.5748 2.90865 12.3327L3.15052 12.5436H3.18773C3.27455 12.6242 3.37378 12.6924 3.4668 12.7668C3.55983 12.8412 3.60324 12.8723 3.67146 12.9157C3.7689 12.9875 3.87036 13.0538 3.97534 13.1141L4.1862 13.2444C4.29163 13.3064 4.40326 13.3622 4.51489 13.418L4.73195 13.5234L5.07304 13.6661L5.3025 13.7529L5.6498 13.8645L5.91647 13.9327L6.23896 14.0072L6.58625 14.0568L6.85293 14.094C7.06378 14.094 7.27464 14.125 7.47309 14.125C7.67155 14.125 7.89481 14.125 8.09326 14.094L8.35994 14.0568L8.70723 14.0072L9.02972 13.9327L9.30259 13.8583L9.64369 13.7529L9.89795 13.6971L10.2328 13.5544L10.4561 13.449L10.7786 13.2754L10.9895 13.1451L11.2933 12.9529L11.498 12.7978C11.591 12.7234 11.6902 12.6552 11.7771 12.5746H11.8143L12.0561 12.3637C12.7205 11.7395 13.249 10.985 13.6086 10.1474C13.9682 9.30976 14.1512 8.40695 14.1461 7.4954Z" fill="currentColor"/>
@@ -107,7 +136,7 @@
                   Warna Hewan</a>
                </li>
                <li>
-                  <a href="{{ route('masterdata.pelayanan.index') }}" class="flex items-center  p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-hovWhite">
+                  <a href="{{ route('masterdata.pelayanan.index') }}" class="flex items-center  p-2 transition duration-75 rounded-lg pl-11 group {{ request()->routeIs('masterdata.pelayanan*') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
                      <svg class="me-3" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="15" height="15" rx="7.5" fill="currentColor"/>
                         <path opacity="0.1" d="M14.1461 7.4954C14.1488 6.38989 13.8765 5.30108 13.3538 4.32697C12.831 3.35286 12.0743 2.52403 11.1516 1.91508C10.2289 1.30613 9.16931 0.936192 8.06813 0.838555C6.96694 0.740917 5.85876 0.918648 4.84334 1.35575C3.82792 1.79285 2.93713 2.4756 2.25117 3.34254C1.5652 4.20949 1.10559 5.2334 0.913699 6.32212C0.721811 7.41085 0.803673 8.5302 1.15192 9.57942C1.50016 10.6286 2.10385 11.5748 2.90865 12.3327L3.15052 12.5436H3.18773C3.27455 12.6242 3.37378 12.6924 3.4668 12.7668C3.55983 12.8412 3.60324 12.8723 3.67146 12.9157C3.7689 12.9875 3.87036 13.0538 3.97534 13.1141L4.1862 13.2444C4.29163 13.3064 4.40326 13.3622 4.51489 13.418L4.73195 13.5234L5.07304 13.6661L5.3025 13.7529L5.6498 13.8645L5.91647 13.9327L6.23896 14.0072L6.58625 14.0568L6.85293 14.094C7.06378 14.094 7.27464 14.125 7.47309 14.125C7.67155 14.125 7.89481 14.125 8.09326 14.094L8.35994 14.0568L8.70723 14.0072L9.02972 13.9327L9.30259 13.8583L9.64369 13.7529L9.89795 13.6971L10.2328 13.5544L10.4561 13.449L10.7786 13.2754L10.9895 13.1451L11.2933 12.9529L11.498 12.7978C11.591 12.7234 11.6902 12.6552 11.7771 12.5746H11.8143L12.0561 12.3637C12.7205 11.7395 13.249 10.985 13.6086 10.1474C13.9682 9.30976 14.1512 8.40695 14.1461 7.4954Z" fill="currentColor"/>
@@ -116,7 +145,7 @@
                      Servis</a>
                   </li>
                   <li>
-                  <a href="{{ route('masterdata.hewan.index') }}" class="flex items-center  p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-hovWhite">
+                  <a href="{{ route('masterdata.hewan.index') }}" class="flex items-center  p-2 transition duration-75 rounded-lg pl-11 group {{ request()->routeIs('masterdata.hewan*') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
                      <svg class="me-3" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <rect width="15" height="15" rx="7.5" fill="currentColor"/>
                      <path opacity="0.1" d="M14.1461 7.4954C14.1488 6.38989 13.8765 5.30108 13.3538 4.32697C12.831 3.35286 12.0743 2.52403 11.1516 1.91508C10.2289 1.30613 9.16931 0.936192 8.06813 0.838555C6.96694 0.740917 5.85876 0.918648 4.84334 1.35575C3.82792 1.79285 2.93713 2.4756 2.25117 3.34254C1.5652 4.20949 1.10559 5.2334 0.913699 6.32212C0.721811 7.41085 0.803673 8.5302 1.15192 9.57942C1.50016 10.6286 2.10385 11.5748 2.90865 12.3327L3.15052 12.5436H3.18773C3.27455 12.6242 3.37378 12.6924 3.4668 12.7668C3.55983 12.8412 3.60324 12.8723 3.67146 12.9157C3.7689 12.9875 3.87036 13.0538 3.97534 13.1141L4.1862 13.2444C4.29163 13.3064 4.40326 13.3622 4.51489 13.418L4.73195 13.5234L5.07304 13.6661L5.3025 13.7529L5.6498 13.8645L5.91647 13.9327L6.23896 14.0072L6.58625 14.0568L6.85293 14.094C7.06378 14.094 7.27464 14.125 7.47309 14.125C7.67155 14.125 7.89481 14.125 8.09326 14.094L8.35994 14.0568L8.70723 14.0072L9.02972 13.9327L9.30259 13.8583L9.64369 13.7529L9.89795 13.6971L10.2328 13.5544L10.4561 13.449L10.7786 13.2754L10.9895 13.1451L11.2933 12.9529L11.498 12.7978C11.591 12.7234 11.6902 12.6552 11.7771 12.5746H11.8143L12.0561 12.3637C12.7205 11.7395 13.249 10.985 13.6086 10.1474C13.9682 9.30976 14.1512 8.40695 14.1461 7.4954Z" fill="currentColor"/>
@@ -125,7 +154,7 @@
                   Jenis Hewan</a>
                </li>
                <li>
-                  <a href="#" class="flex items-center  p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-hovWhite">
+                  <a href="{{ route('masterdata.users.index') }}" class="flex items-center  p-2 transition duration-75 rounded-lg pl-11 group {{ request()->routeIs('masterdata.users*') ? 'bg-white text-klinikBlue' : 'hover:text-white hover:bg-hovWhite text-white' }}">
                   <svg class="me-3" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <rect width="15" height="15" rx="7.5" fill="currentColor"/>
                      <path opacity="0.1" d="M14.1461 7.4954C14.1488 6.38989 13.8765 5.30108 13.3538 4.32697C12.831 3.35286 12.0743 2.52403 11.1516 1.91508C10.2289 1.30613 9.16931 0.936192 8.06813 0.838555C6.96694 0.740917 5.85876 0.918648 4.84334 1.35575C3.82792 1.79285 2.93713 2.4756 2.25117 3.34254C1.5652 4.20949 1.10559 5.2334 0.913699 6.32212C0.721811 7.41085 0.803673 8.5302 1.15192 9.57942C1.50016 10.6286 2.10385 11.5748 2.90865 12.3327L3.15052 12.5436H3.18773C3.27455 12.6242 3.37378 12.6924 3.4668 12.7668C3.55983 12.8412 3.60324 12.8723 3.67146 12.9157C3.7689 12.9875 3.87036 13.0538 3.97534 13.1141L4.1862 13.2444C4.29163 13.3064 4.40326 13.3622 4.51489 13.418L4.73195 13.5234L5.07304 13.6661L5.3025 13.7529L5.6498 13.8645L5.91647 13.9327L6.23896 14.0072L6.58625 14.0568L6.85293 14.094C7.06378 14.094 7.27464 14.125 7.47309 14.125C7.67155 14.125 7.89481 14.125 8.09326 14.094L8.35994 14.0568L8.70723 14.0072L9.02972 13.9327L9.30259 13.8583L9.64369 13.7529L9.89795 13.6971L10.2328 13.5544L10.4561 13.449L10.7786 13.2754L10.9895 13.1451L11.2933 12.9529L11.498 12.7978C11.591 12.7234 11.6902 12.6552 11.7771 12.5746H11.8143L12.0561 12.3637C12.7205 11.7395 13.249 10.985 13.6086 10.1474C13.9682 9.30976 14.1512 8.40695 14.1461 7.4954Z" fill="currentColor"/>

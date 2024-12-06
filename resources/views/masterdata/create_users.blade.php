@@ -76,12 +76,9 @@
                     <p id="error-message" class="hidden mt-1" style="font-size: 0.7rem; color: #FF0000">Password tidak cocok.</p>
                 </div>
             </div>
-
-
-
             <div class="flex justify-end mt-4">
-                <button type="submit"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">Submit</button>
+            <x-button color="blue" type="submit"
+                class="font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">Submit</x-button>
             </div>
     </div>
     </form>

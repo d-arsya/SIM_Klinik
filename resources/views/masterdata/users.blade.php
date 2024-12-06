@@ -1,14 +1,20 @@
 @extends('layout.app')
 @section('content')
-    <div class="flex items-center justify-between px-8">
-        <h1 class="font-bold">Tabel Users</h1>
-        <div class="flex">
-            <a href="{{ route('masterdata.users.create') }}"
-                class="w-46 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition-all duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                Tambah Users
-            </a>
+
+<div class="flex items-center justify-between">
+    <div class="py-5">
+        <h2 class="text-xl font-semibold">Tabel Users</h2>
+    </div>
+    <div class="flex gap-2">
+        <!-- Tambah Owner & Pasien Baru -->
+        <x-link color="blue" href="{{ route('masterdata.users.create') }}" class="font-bold w-[202px] py-5">Tambah User</x-link>
+
+        <x-button data-modal-target="tambah-bulk" data-modal-toggle="tambah-bulk" type="button" color="" class="bg-[#EFF6FF] border border-bulkStroke text-klinikBlue font-bold w-[202px] h-[56.8px]">Tambah Bulk</x-button>
+        <div id="tambah-bulk" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)]">
+            @include('masterdata.tambah_bulk')
         </div>
     </div>
+</div>
 
     <!-- Input Pencarian dan Filter -->
     <div class="flex p-4 m-4 border-2 rounded-xl">
@@ -78,6 +84,28 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <td class="px-6 py-2 font-semibold border-r border-gray-100">1</td>
+                            <td class="px-6 py-2 font-semibold text-center border-r border-gray-100">
+                                DOK-EDEL</td>
+                            <td class="px-6 py-2 font-semibold border-r border-gray-100 ">Edeline</td>
+                            <td class="px-6 py-2 font-semibold border-r border-gray-100 ">Dokter</td>
+                            <td class="px-6 py-2 font-semibold text-sm border-r border-gray-100 ">edeline@gmail.com</td>
+                            <td class="px-6 py-2 text-center border-r border-gray-100">
+                                <div>
+                                    <x-link color="" href="" class="bg-[#EFA006]">
+                                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.4553 15.1338L16.6186 8.97044C15.5817 8.53729 14.64 7.90477 13.8469 7.10877C13.0505 6.31548 12.4177 5.37348 11.9844 4.33627L5.82109 10.4996C5.34026 10.9804 5.09942 11.2213 4.89276 11.4863C4.64892 11.7992 4.43964 12.1375 4.26859 12.4954C4.12442 12.7988 4.01692 13.1221 3.80192 13.7671L2.66692 17.1696C2.61468 17.3254 2.60693 17.4927 2.64454 17.6526C2.68215 17.8126 2.76363 17.9589 2.87982 18.075C2.996 18.1912 3.14229 18.2727 3.30225 18.3103C3.4622 18.3479 3.62947 18.3402 3.78526 18.2879L7.18776 17.1529C7.83359 16.9379 8.15609 16.8304 8.45942 16.6863C8.81887 16.5152 9.15526 16.3071 9.46859 16.0621C9.73359 15.8554 9.97442 15.6146 10.4553 15.1338ZM18.3286 7.26044C18.9431 6.64591 19.2884 5.81243 19.2884 4.94335C19.2884 4.07428 18.9431 3.2408 18.3286 2.62627C17.7141 2.01174 16.8806 1.6665 16.0115 1.6665C15.1424 1.6665 14.309 2.01174 13.6944 2.62627L12.9553 3.36544L12.9869 3.45794C13.3511 4.50025 13.9472 5.44626 14.7303 6.2246C15.5319 7.03112 16.511 7.63897 17.5894 7.99961L18.3286 7.26044Z" fill="#F8F8F8"/>
+                                        </svg>
+                                    </x-link>
+                                    <x-link color="red" href="">
+                                        <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5.73926 0V1H0.739258V3H1.73926V16C1.73926 16.5304 1.94997 17.0391 2.32504 17.4142C2.70012 17.7893 3.20882 18 3.73926 18H13.7393C14.2697 18 14.7784 17.7893 15.1535 17.4142C15.5285 17.0391 15.7393 16.5304 15.7393 16V3H16.7393V1H11.7393V0H5.73926ZM5.73926 5H7.73926V14H5.73926V5ZM9.73926 5H11.7393V14H9.73926V5Z" fill="#F8F8F8"/>
+                                        </svg>
+                                    </x-link>
+                                </div>
+                            </td>
+                        </tr> -->
                         @foreach ($users as $index => $item)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td class="px-6 py-4 font-semibold border-r border-gray-100">
@@ -88,34 +116,26 @@
                                 <td class="px-6 py-4 font-semibold border-r border-gray-100 ">{{ $item->role }}</td>
                                 <td class="px-6 py-4 font-semibold border-r border-gray-100 ">{{ $item->email }}</td>
                                 <td class="flex justify-center px-6 py-4 space-x-2 text-center border-r border-gray-100">
-                                    <a href="{{ route('masterdata.users.edit', $item->id) }}"
-                                        class="inline-block px-2 py-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-500 hover:scale-105 hover:shadow-xl dark:focus:ring-yellow-900">
-                                        <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            fill="currentColor" viewBox="0 0 24 24">
-                                            <path fill-rule="evenodd"
-                                                d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
-                                                clip-rule="evenodd" />
-                                            <path fill-rule="evenodd"
-                                                d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </a>
+                                    <form action="{{ route('masterdata.users.edit', $item->id) }}">
+                                        @csrf
+                                        <x-button type="submit" color=""
+                                            class="bg-[#EFA006] font-medium text-white transition-all duration-200 ease-in-out transform focus:outline-none hover:bg-yellow-500 hover:scale-105 hover:shadow-xl" aria-hidden="true">
+                                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.4553 15.1338L16.6186 8.97044C15.5817 8.53729 14.64 7.90477 13.8469 7.10877C13.0505 6.31548 12.4177 5.37348 11.9844 4.33627L5.82109 10.4996C5.34026 10.9804 5.09942 11.2213 4.89276 11.4863C4.64892 11.7992 4.43964 12.1375 4.26859 12.4954C4.12442 12.7988 4.01692 13.1221 3.80192 13.7671L2.66692 17.1696C2.61468 17.3254 2.60693 17.4927 2.64454 17.6526C2.68215 17.8126 2.76363 17.9589 2.87982 18.075C2.996 18.1912 3.14229 18.2727 3.30225 18.3103C3.4622 18.3479 3.62947 18.3402 3.78526 18.2879L7.18776 17.1529C7.83359 16.9379 8.15609 16.8304 8.45942 16.6863C8.81887 16.5152 9.15526 16.3071 9.46859 16.0621C9.73359 15.8554 9.97442 15.6146 10.4553 15.1338ZM18.3286 7.26044C18.9431 6.64591 19.2884 5.81243 19.2884 4.94335C19.2884 4.07428 18.9431 3.2408 18.3286 2.62627C17.7141 2.01174 16.8806 1.6665 16.0115 1.6665C15.1424 1.6665 14.309 2.01174 13.6944 2.62627L12.9553 3.36544L12.9869 3.45794C13.3511 4.50025 13.9472 5.44626 14.7303 6.2246C15.5319 7.03112 16.511 7.63897 17.5894 7.99961L18.3286 7.26044Z" fill="#F8F8F8"/>
+                                            </svg>
+                                        </x-button>
+                                    </form>
 
                                     <form action="{{ route('masterdata.users.destroy', $item->id) }}" method="POST"
                                         class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button onclick="return confirm('Yakin mau dihapus?')" type="submit"
-                                            class="px-2 py-2 text-sm font-medium text-white transition-all duration-200 ease-in-out transform bg-red-700 rounded-lg shadow-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900 hover:scale-105 hover:shadow-xl dark:bg-red-600 dark:hover:bg-red-700">
-                                            <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                fill="currentColor" viewBox="0 0 24 24">
-                                                <path fill-rule="evenodd"
-                                                    d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
-                                                    clip-rule="evenodd" />
+                                        <x-button onclick="return confirm('Yakin mau dihapus?')" type="submit" color="red"
+                                            class="font-medium text-white transition-all duration-200 ease-in-out transform rounded-lg shadow-lg focus:outline-none hover:bg-red-800 focus:ring-4 focus:ring-red-300 hover:scale-105 hover:shadow-xl me-2" aria-hidden="true">
+                                            <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.73926 0V1H0.739258V3H1.73926V16C1.73926 16.5304 1.94997 17.0391 2.32504 17.4142C2.70012 17.7893 3.20882 18 3.73926 18H13.7393C14.2697 18 14.7784 17.7893 15.1535 17.4142C15.5285 17.0391 15.7393 16.5304 15.7393 16V3H16.7393V1H11.7393V0H5.73926ZM5.73926 5H7.73926V14H5.73926V5ZM9.73926 5H11.7393V14H9.73926V5Z" fill="#F8F8F8"/>
                                             </svg>
-                                        </button>
+                                        </x-button>
                                     </form>
                                 </td>
 

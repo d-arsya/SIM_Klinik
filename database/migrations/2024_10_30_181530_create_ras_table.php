@@ -12,7 +12,8 @@ class CreateRasTable extends Migration
         Schema::create('ras', function (Blueprint $table) {
             $table->id('id_ras');
             // $table->foreignId('id_jenis_hewan')->constrained('hewan')->onDelete('cascade');
-            $table->foreignIdFor(Hewan::class)->onDelete('cascade');
+            // $table->foreignIdFor(Hewan::class)->onDelete('cascade');
+            $table->foreignId('hewan_id')->constrained('hewan','id_jenis_hewan')->onDelete('cascade');
             $table->string('nama_ras');
             $table->timestamps();
         });

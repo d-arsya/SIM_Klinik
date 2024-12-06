@@ -18,10 +18,12 @@
 </head>
 <body>
     <div class="flex h-screen">
-        @include('components.sidebar')
+        <div>
+            @include('components.sidebar')
+        </div>
         
         <!-- Main Content -->
-        <div class="flex-1 sm:ml-[280px] px-10">
+        <div class="w-10/12 ml-auto px-10">
             @include('components.heading')
             <!-- Content -->
             <main class="pb-[60px]">

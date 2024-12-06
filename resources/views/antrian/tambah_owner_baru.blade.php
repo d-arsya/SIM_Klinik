@@ -17,7 +17,10 @@
 
         <!-- Gender Field -->
         <x-label>Gender</x-label>
-        <input type="text" name="gender" placeholder="cth : Perempuan" class="col-span-3 mt-2 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        <select name="gender" class="col-span-3 mt-2 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="laki-laki" {{ old('gender') == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+            <option value="perempuan" {{ old('gender') == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+        </select>
 
         <!-- Phone Number Field -->
         <x-label>Nomor Telepon</x-label>

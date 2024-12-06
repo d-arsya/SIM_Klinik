@@ -17,14 +17,10 @@ class CreateOwnerTable extends Migration
             $table->string('nama_owner');
             $table->string('gender');
             $table->string('alamat');
-            // $table->foreignId('id_provinsi')->constrained('provinsi')->onDelete('cascade');
-            // $table->foreignId('id_kabupaten')->constrained('kabupaten')->onDelete('cascade');
-            // $table->foreignId('id_kecamatan')->constrained('kecamatan')->onDelete('cascade');
-            // $table->foreignId('id_desa')->constrained('desa')->onDelete('cascade');
-            $table->foreignIdFor(Provinsi::class)->onDelete('cascade');
-            $table->foreignIdFor(Kabupaten::class)->onDelete('cascade');
-            $table->foreignIdFor(Kecamatan::class)->onDelete('cascade');
-            $table->foreignIdFor(Desa::class)->onDelete('cascade');
+            $table->foreignId('id_provinsi')->constrained('provinsi');
+            // $table->foreignIdFor(Kabupaten::class)->onDelete('cascade');
+            // $table->foreignIdFor(Kecamatan::class)->onDelete('cascade');
+            // $table->foreignIdFor(Desa::class)->onDelete('cascade');
             $table->string('no_hp');
             $table->timestamps();
         });

@@ -58,7 +58,7 @@ class DiagnosaController extends Controller
         $diagnosa = Diagnosa::findOrFail($id_diagnosa);
         $hewan = Hewan::all();
         return view('masterdata.edit_diagnosa', compact('diagnosa', 'hewan'));
-    }
+    }   
 
     /**
      * Update the specified resource in storage.

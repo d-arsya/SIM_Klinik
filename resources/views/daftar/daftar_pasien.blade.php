@@ -74,12 +74,12 @@
             </td>
             <td class="px-5 py-4 border">
                 <div>
-                    <a href="#" class="text-klinikBlue underline font-bold">Guguk</a>
+                    <a href="{{ route('profile_pasien') }}" class="text-klinikBlue underline font-bold">Guguk</a>
                     <p class="text-[#4B5675]">Anjing</p>
                 </div>
             </td>
             <td class="px-5 py-4 border">
-                <a href="#" class="text-klinikBlue underline font-medium">Andi</a>
+                <a href="{{ route('detail_owner_dokter') }}" class="text-klinikBlue underline font-medium">Andi</a>
             </td>
             <td class="px-5 py-4 border">
                 2 Tahun
@@ -194,7 +194,7 @@
                 </div>
             </td>
             <td class="px-5 py-4 border">
-                <a href="#" class="text-klinikBlue underline font-medium">Robert Fox</a>
+                <a href="{{ route('detail_owner_dokter') }}" class="text-klinikBlue underline font-medium">Robert Fox</a>
             </td>
             <td class="px-5 py-4 border">
                 2 Tahun
