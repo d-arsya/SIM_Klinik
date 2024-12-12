@@ -1,5 +1,4 @@
 @extends('layout.app')
-@section('title', 'detail hewan')
 @section('content')
 <div class="flex flex-col pb-3">
     <a href="javascript:history.back()" class="flex items-center font-semibold text-black hover:text-gray-800">
@@ -34,34 +33,26 @@
 </div>
 
 <div class="container mx-auto p-4">
-    <h1 class="text-xl font-bold mb-4">Tambah Obat</h1>
-    <div class="grid grid-cols-1 md:grid-cols-8 gap-10">
-        <div class="col-span-2">
-            <label for="jenis-obat" class="block text-sm font-medium text-gray-700">Jenis Obat</label>
+    <h1 class="text-xl font-bold mb-4">Tambah Service</h1>
+    <div class="grid grid-cols-1 w-2/3 md:grid-cols-10 gap-10">
+        <div class="col-span-8">
+            <label for="jenis-obat" class="block text-xs font-medium text-gray-700">Jenis Service</label>
             <select id="jenis-obat" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>-- Pilih Obat --</option>
+                <option>cth : Konsultasi</option>
             </select>
         </div>
         <div class="col-span-2">
-            <label for="nama-obat" class="block text-sm font-medium text-gray-700">Nama Obat</label>
-            <select id="nama-obat" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>-- Pilih Nama Obat --</option>
-            </select>
-        </div>
-        <div>
-            <label for="jumlah-obat" class="block text-sm font-medium text-gray-700">Jumlah Obat</label>
+            <label for="jumlah-obat" class="block text-xs font-medium text-gray-700">Jumlah Hari Pemeriksaan</label>
             <input type="number" id="jumlah-obat" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="1">
         </div>
-        <div class="col-span-3">
-            <label for="catatan" class="block text-sm font-medium text-gray-700">Catatan</label>
-            <textarea id="catatan" rows="10" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">-- beri note di sini --</textarea>
+        <div class="col-span-10">
+            <x-button color="blue" type="submit"
+                class="font-medium rounded-lg text-sm focus:outline-none">Tambah Service</x-button>
         </div>
-        <x-button color="blue" type="submit"
-            class="font-medium rounded-lg text-sm px-2 py-3 focus:outline-none">Tambah Obat</x-button>
     </div>
 </div>
 
-<div class="place-items-center my-5">
+<div class="place-self-center my-5 w-fit">
     <table id="dataTable">
         <thead class="text-xs text-gray-700 bg-gray-50">
         <tr>
@@ -73,10 +64,8 @@
                     </svg></a>
                 </div>
             </th>
-            <th scope="col" class="px-5 py-3 border-b">Jenis Obat</th>
-            <th scope="col" class="px-5 py-3 border-b">Nama Obat</th>
-            <th scope="col" class="px-5 py-3 border-b">Catatan</th>
-            <th scope="col" class="px-5 py-3 border-b">Jumlah Obat</th>
+            <th scope="col" class="px-5 py-3 border-b">Jenis Service</th>
+            <th scope="col" class="px-5 py-3 border-b">Jumlah Hari</th>
             <th scope="col" class="px-5 py-3 border-b">Aksi</th>
         </tr>
         </thead>
@@ -86,18 +75,10 @@
                     1
                 </td>
                 <td class="px-5 py-4 border">
-                    Antibiotik
+                    UGD
                 </td>    
                 <td class="px-5 py-4 border">
-                    Antibiotik E
-                </td>
-                <td class="px-5 py-4 border">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting 
-                    industry. Lorem Ipsum has been the industry's standard dummy 
-                    text ever since the 1500s
-                </td>
-                <td class="px-5 py-4 border">
-                    2
+                    1
                 </td>
                 <td class="px-5 py-4 border">
                     <x-button type="button" color="red" class="bg-alert hover:bg-hovAlert">
@@ -112,42 +93,8 @@
                     1
                 </td>
                 <td class="px-5 py-4 border">
-                    Antibiotik
+                    Rawat Inap
                 </td>    
-                <td class="px-5 py-4 border">
-                    Antibiotik E
-                </td>
-                <td class="px-5 py-4 border">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting 
-                    industry. Lorem Ipsum has been the industry's standard dummy 
-                    text ever since the 1500s
-                </td>
-                <td class="px-5 py-4 border">
-                    2
-                </td>
-                <td class="px-5 py-4 border">
-                    <x-button type="button" color="red" class="bg-alert hover:bg-hovAlert">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.964 12.4319L10.5321 8.00002L14.964 3.56811C15.049 3.48214 15.0966 3.36618 15.0966 3.24535C15.0966 3.12451 15.049 3.00855 14.964 2.92258L12.8704 0.828976C12.7848 0.743391 12.6687 0.695312 12.5477 0.695312C12.4266 0.695312 12.3105 0.743391 12.2249 0.828976L7.79299 5.26089L3.36107 0.828976C3.27546 0.743391 3.15937 0.695312 3.03831 0.695312C2.91726 0.695312 2.80116 0.743391 2.71555 0.828976L0.621945 2.92258C0.53636 3.00819 0.488281 3.12429 0.488281 3.24535C0.488281 3.3664 0.53636 3.4825 0.621945 3.56811L5.05386 8.00002L0.621945 12.4319C0.53636 12.5175 0.488281 12.6336 0.488281 12.7547C0.488281 12.8757 0.53636 12.9918 0.621945 13.0775L2.71555 15.1711C2.80116 15.2566 2.91726 15.3047 3.03831 15.3047C3.15937 15.3047 3.27546 15.2566 3.36107 15.1711L7.79299 10.7392L12.2249 15.1711C12.3105 15.2566 12.4266 15.3047 12.5477 15.3047C12.6687 15.3047 12.7848 15.2566 12.8704 15.1711L14.964 13.0775C15.0496 12.9918 15.0977 12.8757 15.0977 12.7547C15.0977 12.6336 15.0496 12.5175 14.964 12.4319Z" fill="#F8F8F8"/>                
-                        </svg>
-                    </x-button>
-                </td>    
-            </tr>
-            <tr>
-                <td class="px-5 py-4 border-y">
-                    1
-                </td>
-                <td class="px-5 py-4 border">
-                    Antibiotik
-                </td>    
-                <td class="px-5 py-4 border">
-                    Antibiotik E
-                </td>
-                <td class="px-5 py-4 border">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting 
-                    industry. Lorem Ipsum has been the industry's standard dummy 
-                    text ever since the 1500s
-                </td>
                 <td class="px-5 py-4 border">
                     2
                 </td>

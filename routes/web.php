@@ -26,13 +26,18 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::controller(LoginController::class)->group(function() {
+    Route::get('/register','register')->name('register');
+    Route::post('/store','store')->name('store');
+    Route::get('/login','login')->name('login');
+    Route::post('/authenticate','authenticate')->name('authenticate');
+    Route::get('/dashboard','dashboard')->name('dashboard');
+    Route::post('/logout','logout')->name('logout');
+});
 
 Route::resource('owner', OwnerController::class);
 Route::resource('pasien', PasienController::class);
@@ -52,9 +57,19 @@ Route::view('/detail-owner-dokter', 'daftar_dokter.detail_owner_dokter')->name('
 Route::view('/detail-hewan-pertanggal-dokter', 'daftar_dokter.detail_pertanggal')->name('hewan_pertanggal_dokter');
 Route::view('/detail-rawatinap-pertanggal-dokter', 'daftar_dokter.rawatinap_pertanggal')->name('rawatinap_pertanggal_dokter');
 Route::view('/tambah-obat-rawatinap', 'daftar_dokter.tambah_obat')->name('rawatinap_tambah_obat');
+Route::view('/tambah-diagnosa-rawatinap', 'daftar_dokter.tambah_diagnosa')->name('rawatinap_tambah_diagnosa');
+Route::view('/tambah-service-rawatinap', 'daftar_dokter.tambah_service')->name('rawatinap_tambah_service');
 
 Route::view('/list-rawat-inap', 'rawat_inap.index')->name('list_rawatinap');
+
+Route::view('/list-rawat-inap-dokter', 'rawatinap_dokter.index')->name('dokter_rawatinap');
+
 Route::view('/profile', 'profile.index')->name('profile');
+Route::view('/edit_profile', 'profile.edit_profile')->name('edit_profile');
+
+Route::view('/profile-dokter', 'profile_dokter.index')->name('dokter_profile');
+Route::view('/edit-profile-dokter', 'profile_dokter.edit_profile')->name('dokter_edit_profile');
+
 Route::view('/detail-owner', 'antrian.detail_owner')->name('detail_owner');
 Route::view('/detail-hewan', 'antrian.detail_hewan')->name('detail_hewan');
 Route::view('/detail-hewan-pertanggal', 'antrian.detail_hewan_pertanggal')->name('hewan_pertanggal');

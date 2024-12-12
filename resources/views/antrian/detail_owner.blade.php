@@ -32,7 +32,10 @@
     </div>
 </div>
 <div>
-    <div class="font-semibold text-base my-3">Histori Pemeriksaan</div>
+    <div class="flex justify-between">
+        <div class="font-semibold text-base my-3">Histori Pemeriksaan</div>
+        <x-link href="#" color="blue" class="me-7">Tambah Pasien</x-link>
+    </div>
     <x-table>
         <thead class="text-xs text-gray-700 bg-gray-50">
             <tr>

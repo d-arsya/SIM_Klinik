@@ -8,33 +8,82 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    // Tambahkan $redirectTo untuk mengarahkan pengguna setelah login
-    protected $redirectTo = '/dashboard';
-    
-    public function showLoginForm()
+    public function __construct()
+    {
+        $this->middleware('guest')->except([
+            'logout','dashboard'
+        ]);
+    }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name'  => 'required|string|max:250',
+            'email'  => 'required|email|max:250|unique:users',
+            'password'  => 'required|min:8|confirmed',
+            'photo' => 'image|nullable|max1999'
+        ]);
+
+        User::create([
+            'name'  => $request->name,
+            'email'  => $request->email,
+            'password'  => Hash::make($request->password),
+        ]);
+
+        $credentials = $request->only('email','password');
+        Auth::attempt($credentials);
+        $request->session()->regenerate();
+        return redirect()->route('dashboard')
+        ->withSuccess('You have successfully registered & logged in');
+    }
+
+    public function login()
     {
         return view('auth.login');
     }
-    
-    public function login(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string|min:6',
-        ]);
 
-        // Cek kredensial login
-        $credentials = $request->only('email', 'password');
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
         if (Auth::attempt($credentials)) {
-            // Redirect ke dashboard setelah login berhasil
-            return redirect()->intended($this->redirectTo);
+            $request->session()->regenerate();
+            
+            return redirect()->route('dashboard')
+                ->withSuccess('You have successfully logged in!');
         }
 
-        // Jika login gagal, kembali dengan pesan error
-        return redirect()->back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ]);
+        return back()->withErrors([
+            'email' => 'Your provided credentials do not match in our records.',
+        ])->onlyInput('email');
+    }
+
+    public function dashboard()
+    {
+        if (Auth::check()) {
+            return view('dashboard.index');
+        }
+
+        return redirect()->route('login')
+            ->withErrors([
+                'email' => 'Please login to access the dashboard.',
+            ])->onlyInput('email');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login')
+            ->withSuccess('You have logged out successfully!');;
     }
 }

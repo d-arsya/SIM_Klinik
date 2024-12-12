@@ -9,7 +9,7 @@
             <h2 class="text-xl font-medium">Dashboard</h2>
             <p class="text-[#4B5675]">Central Hub for Personal Customization</p>
         </div>
-        <button class="bg-white text-[#4B5675] h-8 px-4 text-xs border border-1 border-[#DBDFE9] hover:bg-[#DBDFE9] self-center rounded-md">View Profile</button>
+        <a href="{{ route('profile') }}" class="bg-white text-[#4B5675] h-8 px-4 text-xs border border-1 border-[#DBDFE9] hover:bg-[#DBDFE9] place-self-center content-center rounded-md">View Profile</a>
     </div>
 
     <!-- Summary -->

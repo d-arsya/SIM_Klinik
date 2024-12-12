@@ -131,7 +131,7 @@
                 </x-button>
                 <x-pop-up id="history" 
                 header="Pemilik Hewan Peliharaan Baru" 
-                width="1122px">
+                width="800px">
                     <!-- Modal body -->
                     @include('antrian_dokter.aksi_modals')
                 </x-pop-up>
@@ -168,7 +168,7 @@
                         <path d="M0 10.7H2.11111V7.3H0V10.7ZM0 17.5H2.11111V14.1H0V17.5ZM0 3.9H2.11111V0.5H0V3.9ZM4.22222 10.7H19V7.3H4.22222V10.7ZM4.22222 17.5H19V14.1H4.22222V17.5ZM4.22222 0.5V3.9H19V0.5H4.22222Z" fill="#F8F8F8"/>
                     </svg>
                 </x-button>
-                <x-pop-up id="history" header="Pemilik Hewan Peliharaan Baru" width="1122px">
+                <x-pop-up id="history" header="Pemilik Hewan Peliharaan Baru" width="973px">
                     <!-- Modal body -->
                     @include('antrian.tambah_owner_baru')
                 </x-pop-up>

@@ -79,7 +79,7 @@
                 </div>
             </td>
             <td class="px-5 py-4 border">
-                <a href="#" class="text-klinikBlue underline font-medium">Andi</a>
+                <a href="{{ route('detail_owner_dokter') }}" class="text-klinikBlue underline font-medium">Andi</a>
             </td>
             <td class="px-5 py-4 border">
                 2 Tahun

@@ -4,7 +4,7 @@
 @section('desc', 'Masukkan ID dan Password Anda')
 
 @section('form')
-<form class="space-y-6" action="{{ route('login') }}" method="POST">
+<form class="space-y-6" action="{{ route('authenticate') }}" method="post">
 @csrf
     <div>
         <label for="email" class="block text-sm font-medium leading-6">Email atau username</label>
@@ -15,14 +15,34 @@
 
     <div>
         <label for="password" class="block text-sm font-medium leading-6">Password</label>
-        <div class="mt-2">
-            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="User@123" required class="block w-full rounded-md border-0 py-1.5 ps-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-            <span class="absolute inset-y-0 right-0 place-items-end flex items-center p-3 cursor-pointer"
-                onclick="togglePasswordVisibility('confirm_password', 'eyeIcon2')">
-                <svg id="eyeIcon2" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-4 text-gray-500" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm3.988-2.53A8.966 8.966 0 0121 12c-1.05 2.72-4.22 5-9 5-4.78 0-7.95-2.28-9-5a8.965 8.965 0 012.012-2.53M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <div class="relative">
+            <input 
+                id="password" 
+                name="password" 
+                type="password" 
+                autocomplete="current-password" 
+                placeholder="User@123" 
+                required 
+                oninput="validatePassword()"
+                class="block w-full rounded-md border-0 py-1.5 ps-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            >
+            <!-- Ikon Mata -->
+            <span 
+                class="absolute inset-y-0 right-0 flex items-center px-3 cursor-pointer"
+                onclick="togglePasswordVisibility('password', 'eyeIcon')">
+                <svg 
+                    id="eyeIcon" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    class="w-5 h-5 text-gray-500" 
+                    fill="none"
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor">
+                    <path 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        stroke-width="2" 
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm3.988-2.53A8.966 8.966 0 0121 12c-1.05 2.72-4.22 5-9 5-4.78 0-7.95-2.28-9-5a8.965 8.965 0 012.012-2.53" 
+                    />
                 </svg>
             </span>
         </div>
@@ -45,29 +65,29 @@
 </form>
 
 <script>
-function togglePasswordVisibility(fieldId, iconId) {
-    const field = document.getElementById(fieldId);
-    const icon = document.getElementById(iconId);
+    function togglePasswordVisibility(fieldId, iconId) {
+        const field = document.getElementById(fieldId);
+        const icon = document.getElementById(iconId);
 
-    if (field.type === "password") {
-        field.type = "text";
-        icon.classList.add("text-blue-500");
-    } else {
-        field.type = "password";
-        icon.classList.remove("text-blue-500");
+        if (field.type === "password") {
+            field.type = "text";
+            icon.classList.add("text-blue-500");
+        } else {
+            field.type = "password";
+            icon.classList.remove("text-blue-500");
+        }
     }
-}
 
-function validatePassword() {
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm_password').value;
-    const errorMessage = document.getElementById('error-message');
+    function validatePassword() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+        const errorMessage = document.getElementById('error-message');
 
-    if (confirmPassword && password !== confirmPassword) {
-        errorMessage.classList.remove("hidden");
-    } else {
-        errorMessage.classList.add("hidden");
+        if (confirmPassword && password !== confirmPassword) {
+            errorMessage.classList.remove("hidden");
+        } else {
+            errorMessage.classList.add("hidden");
+        }
     }
-}
 </script>
 @endsection

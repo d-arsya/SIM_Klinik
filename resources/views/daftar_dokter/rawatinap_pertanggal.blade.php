@@ -159,8 +159,8 @@
  <div class="mb-7">
     <div class="flex justify-between items-center py-3">
         <div class="font-semibold text-base my-3">Diagnosis</div>
-        <x-button color="blue" type="submit"
-            class="font-medium rounded-lg text-sm px-3 py-3 focus:outline-none">Tambah Diagnosis</x-button>
+        <x-link color="blue" href="{{ route('rawatinap_tambah_diagnosa') }}"
+            class="font-medium rounded-lg text-sm px-3 py-3 focus:outline-none">Tambah Diagnosis</x-link>
     </div>
     <table class="w-fit text-left rtl:text-right">
         <thead class="text-gray-500 bg-gray-100 border-b border-gray-200">
@@ -218,8 +218,8 @@
  <div>
     <div class="flex justify-between items-center py-3">
         <div class="font-semibold text-base my-3">Service</div>
-        <x-button color="blue" type="submit"
-            class="font-medium rounded-lg text-sm px-3 py-3 focus:outline-none">Tambah Service</x-button>
+        <x-link color="blue" href="{{ route('rawatinap_tambah_service') }}"
+            class="font-medium rounded-lg text-sm px-3 py-3 focus:outline-none">Tambah Service</x-link>
     </div>
         <table class="w-fit text-left rtl:text-right">
             <thead class="text-gray-500 bg-gray-100 border-b border-gray-200">

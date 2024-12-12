@@ -1,4 +1,4 @@
-<div id="{{ $id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)]">
+<div id="{{ $id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center md:inset-0 h-[calc(100%-1rem)]">
     
     <div class="flex items-start justify-center border-b">
         @isset($navbar1)

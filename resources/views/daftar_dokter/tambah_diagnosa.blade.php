@@ -34,12 +34,23 @@
 </div>
 
 <div class="container mx-auto p-4">
-    <h1 class="text-xl font-bold mb-4">Tambah Obat</h1>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-        <label for="jenis-obat" class="block text-sm font-medium text-gray-700">Jenis Obat</label>
-        <select id="jenis-obat" class="mt-1 col-span-3 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    <h1 class="text-base font-bold mb-4">Tambah Diagnosa</h1>
+    <div class="grid grid-cols-1 md:grid-cols-8 gap-4">
+        <label for="jenis-obat" class="block text-sm font-medium text-gray-700">Diagnosa</label>
+        <select id="jenis-obat" class="col-span-7 mt-1 block w-1/2 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             <option>-- Pilih Obat --</option>
         </select>
+        <div></div>
+        <div class="col-span-7">
+            <div class="flex">
+                <div class="flex items-center rounded-lg bg-[#C4CADA] font-semibold text-xs py-3 px-4">
+                    <svg width="8" height="9" class="me-2" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.25 1.54773L0.75 8.04773M0.75 1.54773L7.25 8.04773" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Muntah-muntah
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
