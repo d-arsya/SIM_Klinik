@@ -1,3 +1,4 @@
+@props(['table'])
 <div class="border shadow-md sm:rounded-lg">
     <!-- Search -->
         <div class="flex items-center justify-between py-3 p-[27.5px] border-b">
@@ -42,12 +43,86 @@
         </div>
 
     <!-- Tabel Antrian -->
-    <div class="px-[67.5px] place-items-center">
+    <div class=" place-items-center">
         <table class="w-full text-left rtl:text-right mx-10">
         {{ $slot }}
         </table>
     </div>
+
+    <!-- Pagination with Rows Per Page Selector -->
+    <div class="flex items-center justify-between py-4 px-4 text-sm text-gray-700">
+        <!-- Rows Per Page Selector -->
+        <select id="rowsPerPage" onchange="changeRowsPerPage()"
+            class="p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-klinikBlue focus:border-klinikBlue">
+            <option value="10" selected>10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+        {{-- paginate --}}
+        <div class="flex flex-row">
+            <span class="m-4 font-semibold text-[#78829D]">
+                {{ (($table ?? null)?->currentPage() - 1) * (($table ?? null)?->perPage() ?? 10) + 1 }} -
+                {{ min((($table ?? null)?->currentPage() ?? 1) * (($table ?? null)?->perPage() ?? 10), ($table ?? null)?->total() ?? 0) }}
+                of {{ ($table ?? null)?->total() ?? 0 }}
+            </span>
+
+            <div class="flex items-center">
+                <!-- Tombol Sebelumnya -->
+                <button
+                    class="px-2 py-1 mx-1 text-gray-500 bg-white rounded hover:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
+                    @if (($table ?? null)?->onFirstPage()) disabled @endif
+                    onclick="window.location='{{ ($table ?? null)?->previousPageUrl() ?? '#' }}'">
+                    &lt;
+                </button>
+
+                <!-- Nomor Halaman -->
+                @if ($table)
+                    @foreach (range(1, $table->lastPage()) as $page)
+                        @if ($page == $table->currentPage())
+                            <button class="px-3 py-1 mx-1 text-white bg-klinikBlue border border-klinikBlue rounded-lg">
+                                {{ $page }}
+                            </button>
+                        @else
+                            <button
+                                class="px-3 py-1 mx-1 text-[#78829D] bg-white rounded-lg hover:bg-gray-100"
+                                onclick="window.location='{{ $table->url($page) }}'">
+                                {{ $page }}
+                            </button>
+                        @endif
+                    @endforeach
+                @endif
+
+                <!-- Tombol Berikutnya -->
+                <button
+                    class="px-2 py-1 mx-1 text-gray-500 bg-white rounded hover:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
+                    @if (!($table ?? null)?->hasMorePages()) disabled @endif
+                    onclick="window.location='{{ ($table ?? null)?->nextPageUrl() ?? '#' }}'">
+                    &gt;
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    function changeRowsPerPage() {
+        const rows = document.getElementById("rowsPerPage").value;
+        const url = new URL(window.location.href);
+        url.searchParams.set('rows', rows);
+        window.location.href = url.toString(); // Redirect ke URL dengan parameter baru
+    }
+
+    // Menjaga pilihan tetap terlihat setelah halaman di-reload
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const rowsParam = urlParams.get('rows');
+        if (rowsParam) {
+            document.getElementById("rowsPerPage").value = rowsParam;
+        }
+    };
+</script>
+
 <!-- JavaScript untuk Fitur Pencarian -->
 <script>
     function searchTable() {
@@ -67,5 +142,57 @@
             }
             tr[i].style.display = found ? "" : "none";
         }
+    }
+</script>
+
+<!-- Tampilan Filter -->
+<script>
+    let currentOption = null;
+
+    function toggleDropdown() {
+        const dropdown = document.getElementById('dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    function selectOption(optionText) {
+        currentOption = optionText;
+        const filterText = document.getElementById('filterText');
+        filterText.textContent = optionText;
+
+        updateDropdownOptions();
+        const dropdown = document.getElementById('dropdown');
+        dropdown.classList.add('hidden');
+    }
+
+    function updateDropdownOptions() {
+        const options = ['Today', 'Yesterday', '7 Hari yang Lalu', 'Bulan Lalu'];
+        const dropdownOptions = document.getElementById('dropdownOptions');
+        dropdownOptions.innerHTML = '';
+
+        // Masukkan "Hapus Filter" di urutan pertama jika ada opsi yang dipilih
+        if (currentOption) {
+            dropdownOptions.innerHTML += `
+    <li><button onclick="clearFilter()" class="block w-full px-4 py-2 text-left hover:bg-gray-100">Hapus Filter</button></li>
+    `;
+        }
+
+        // Tambahkan opsi yang lain, kecuali opsi yang dipilih sebelumnya
+        options.forEach(option => {
+            if (option !== currentOption) {
+                dropdownOptions.innerHTML += `
+        <li><button onclick="selectOption('${option}')" class="block w-full px-4 py-2 text-left hover:bg-gray-100">${option}</button></li>
+        `;
+            }
+        });
+    }
+
+    function clearFilter() {
+        currentOption = null;
+        const filterText = document.getElementById('filterText');
+        filterText.textContent = 'Filters';
+        updateDropdownOptions();
+
+        const dropdown = document.getElementById('dropdown');
+        dropdown.classList.add('hidden');
     }
 </script>

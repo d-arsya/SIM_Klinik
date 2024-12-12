@@ -1,0 +1,1 @@
+<thead class="text-[#99A1B7] text-sm font-semibold bg-gray-50 border-b border-[#F1F1F4]">{{ $slot }}</thead>

@@ -27,8 +27,8 @@
         </x-pop-up>
     </div>
 </div>
-<x-table>
-    <thead class="text-xs text-gray-700 bg-gray-50">
+<x-table {{-- :table="$antrians" --}} id="dataTable">
+    <x-custom-thead>
         <tr>
             <th scope="col" class="px-5 py-3 border-b">
                 <div class="flex items-center">
@@ -96,7 +96,7 @@
             </th>
             <th scope="col" class="px-5 py-3 border">Aksi</th>
         </tr>
-    </thead>
+    </x-custom-thead>
     <tbody class="text-gray-700">
         <tr>
             <td class="px-5 py-4 border-y">

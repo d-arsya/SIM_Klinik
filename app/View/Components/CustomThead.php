@@ -6,15 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Table extends Component
+class CustomThead extends Component
 {
-    public $table;
     /**
      * Create a new component instance.
      */
-    public function __construct($table = null)
+    public function __construct()
     {
-        $this->table = $table;
+        //
     }
 
     /**
@@ -22,6 +21,6 @@ class Table extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.table');
+        return view('components.custom-thead');
     }
 }
