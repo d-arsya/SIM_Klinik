@@ -26,9 +26,7 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::redirect('/', '/dashboard');
 
 Route::controller(LoginController::class)->group(function() {
     Route::get('/register','register')->name('register');
