@@ -9,10 +9,10 @@ class DesaSeeder extends Seeder
 {
     public function run()
     {
-        Desa::create(['nama_desa' => 'Desa Cibabat', 'kecamatan_id' => 1]); // Sesuaikan kecamatan_id
-        Desa::create(['nama_desa' => 'Desa Cipageran', 'kecamatan_id' => 1]);
-        Desa::create(['nama_desa' => 'Desa Bandengan', 'kecamatan_id' => 2]);
-        Desa::create(['nama_desa' => 'Desa Kreo', 'kecamatan_id' => 3]);
+        Desa::create(['nama_desa' => 'Desa Cibabat', 'id_kecamatan' => 1]); // Sesuaikan id_kecamatan
+        Desa::create(['nama_desa' => 'Desa Cipageran', 'id_kecamatan' => 1]);
+        Desa::create(['nama_desa' => 'Desa Bandengan', 'id_kecamatan' => 2]);
+        Desa::create(['nama_desa' => 'Desa Kreo', 'id_kecamatan' => 3]);
         // Tambahkan data desa lainnya sesuai kebutuhan
     }
 }

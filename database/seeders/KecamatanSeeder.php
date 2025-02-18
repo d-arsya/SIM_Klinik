@@ -9,10 +9,10 @@ class KecamatanSeeder extends Seeder
 {
     public function run()
     {
-        Kecamatan::create(['nama_kecamatan' => 'Cimahi', 'kabupaten_id' => 1]); // Sesuaikan kabupaten_id
-        Kecamatan::create(['nama_kecamatan' => 'Rancaekek', 'kabupaten_id' => 1]);
-        Kecamatan::create(['nama_kecamatan' => 'Tegal', 'kabupaten_id' => 3]);
-        Kecamatan::create(['nama_kecamatan' => 'Krembangan', 'kabupaten_id' => 4]);
+        Kecamatan::create(['nama_kecamatan' => 'Cimahi', 'id_kabupaten' => 1]); // Sesuaikan id_kabupaten
+        Kecamatan::create(['nama_kecamatan' => 'Rancaekek', 'id_kabupaten' => 1]);
+        Kecamatan::create(['nama_kecamatan' => 'Tegal', 'id_kabupaten' => 3]);
+        Kecamatan::create(['nama_kecamatan' => 'Krembangan', 'id_kabupaten' => 4]);
         // Tambahkan data kecamatan lainnya sesuai kebutuhan
     }
 }
