@@ -26,9 +26,8 @@ class Button extends Component
      */
     public function render(): View
     {
-        return view('components.button', [
-            'buttonClasses' => $this->buttonClasses()
-        ]);
+        $buttonClasses = $this->buttonClasses();
+        return view('components.button', compact('buttonClasses','class'));
     }
 
     public function buttonClasses()
