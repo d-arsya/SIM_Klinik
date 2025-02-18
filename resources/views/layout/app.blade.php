@@ -19,12 +19,12 @@
 <body>
     <div class="flex h-screen">
         <div>
-            @include('components.sidebar')
+            <x-sidebar></x-sidebar>
         </div>
         
         <!-- Main Content -->
         <div class="w-10/12 ml-auto px-10">
-            @include('components.heading')
+            <x-heading></x-heading>
             <!-- Content -->
             <main class="pb-[60px]">
                 @yield('content')
